@@ -20,10 +20,10 @@ export const siteConfig = {
 
   // Contact & Location Details
   contact: {
-    phoneDisplay: "+91 98200 54321",
-    phoneCall: "+919820054321",
-    whatsappNumber: "+919820054321",
-    whatsappDisplay: "+91 98200 54321",
+    phoneDisplay: "+91 9326174220",
+    phoneCall: "+919326174220",
+    whatsappNumber: "+919326174220",
+    whatsappDisplay: "+91 9326174220",
     email: "wholesale@magarments.com",
     address: {
       street: "Gala No. 4 & 5, Sion Industrial Compound, LBS Marg",
