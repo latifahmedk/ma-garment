@@ -24,7 +24,7 @@ export const siteConfig = {
     phoneCall: "+919326174220",
     whatsappNumber: "+919326174220",
     whatsappDisplay: "+91 9326174220",
-    email: "wholesale@magarments.com",
+    email: "latif.bst18@gmail.com.com",
     address: {
       street: "Gala No. 4 & 5, Sion Industrial Compound, LBS Marg",
       landmark: "Near Sion Railway Station (West)",
