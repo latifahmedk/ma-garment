@@ -1,7 +1,15 @@
+export interface ProductColorImages {
+  full: string; // 1. Full Pant Image
+  waist: string; // 2. Waist Detail Image
+  pocket: string; // 3. Pocket + Logo Detail Image
+  bottom: string; // 4. Bottom Detail Image
+}
+
 export interface ProductColor {
   name: string;
   hex: string;
   inStock?: boolean;
+  images: ProductColorImages;
 }
 
 export interface Product {

@@ -10,6 +10,7 @@ import ProductModal from "@/components/products/ProductModal";
 
 export default function FeaturedProducts() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedColorName, setSelectedColorName] = useState<string | undefined>(undefined);
 
   // Take the 4 featured products
   const featuredList = products.filter((p) => p.featured).slice(0, 4);
@@ -45,7 +46,10 @@ export default function FeaturedProducts() {
             <ProductCard
               key={product.id}
               product={product}
-              onOpenDetails={(prod) => setSelectedProduct(prod)}
+              onOpenDetails={(prod, color) => {
+                setSelectedProduct(prod);
+                setSelectedColorName(color);
+              }}
             />
           ))}
         </div>
@@ -73,7 +77,11 @@ export default function FeaturedProducts() {
       {/* Modal View */}
       <ProductModal
         product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
+        initialColorName={selectedColorName}
+        onClose={() => {
+          setSelectedProduct(null);
+          setSelectedColorName(undefined);
+        }}
       />
     </section>
   );

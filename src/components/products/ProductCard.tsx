@@ -1,30 +1,36 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Product } from "@/types";
-import { Layers, ShieldCheck, ArrowRight, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 interface ProductCardProps {
   product: Product;
-  onOpenDetails?: (product: Product) => void;
+  onOpenDetails?: (product: Product, initialColorName?: string) => void;
 }
 
 export default function ProductCard({ product, onOpenDetails }: ProductCardProps) {
+  const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
+  const currentColor = product.colors[selectedColorIndex] || product.colors[0];
+  const cardImage = currentColor.images?.full || product.image;
+
   const whatsappInquiryUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(
-    `Hello MA Garments! I am interested in wholesale pricing for your "${product.name}" (${product.fabric}, MOQ: ${product.moq}). Please share catalog & bulk quotation.`
+    `Hello MA Garments! I am interested in wholesale pricing for your "${product.name}" in ${currentColor.name} (${product.fabric}, MOQ: ${product.moq}). Please share catalog & bulk quotation.`
   )}`;
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-2xs hover:shadow-lg hover:border-blue-300 transition-all duration-300 flex flex-col justify-between group">
       {/* Top Image Container */}
       <div>
-        <div className="relative aspect-square w-full bg-slate-100 overflow-hidden cursor-pointer" onClick={() => onOpenDetails?.(product)}>
+        <div
+          className="relative aspect-square w-full bg-slate-100 overflow-hidden cursor-pointer"
+          onClick={() => onOpenDetails?.(product, currentColor.name)}
+        >
           <Image
-            src={product.image}
-            alt={`${product.name} - Wholesale Track Pants Manufacturer Mumbai`}
+            src={cardImage}
+            alt={`${product.name} - ${currentColor.name} - Wholesale Track Pants Manufacturer Mumbai`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -40,10 +46,21 @@ export default function ProductCard({ product, onOpenDetails }: ProductCardProps
             </span>
           </div>
 
+          {/* Active Color Pill Badge */}
+          <div className="absolute bottom-3 left-3">
+            <span className="bg-slate-950/80 backdrop-blur-xs text-white text-[10px] font-medium px-2 py-1 rounded-md shadow-xs flex items-center gap-1.5">
+              <span
+                className="w-2 h-2 rounded-full border border-white/40"
+                style={{ backgroundColor: currentColor.hex }}
+              />
+              <span>{currentColor.name}</span>
+            </span>
+          </div>
+
           {/* Quick View trigger on hover */}
           <div className="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
             <span className="bg-white/95 text-slate-900 text-xs font-bold px-3.5 py-2 rounded-lg shadow-md pointer-events-auto">
-              View Factory Specs
+              View 4 Detail Views & Specs
             </span>
           </div>
         </div>
@@ -52,7 +69,7 @@ export default function ProductCard({ product, onOpenDetails }: ProductCardProps
         <div className="p-5 space-y-3">
           <div>
             <h3
-              onClick={() => onOpenDetails?.(product)}
+              onClick={() => onOpenDetails?.(product, currentColor.name)}
               className="text-base sm:text-lg font-bold text-slate-900 leading-snug group-hover:text-blue-700 transition-colors cursor-pointer"
             >
               {product.name}
@@ -62,22 +79,40 @@ export default function ProductCard({ product, onOpenDetails }: ProductCardProps
             </p>
           </div>
 
-          {/* Color swatches */}
+          {/* Color swatches with click-to-preview */}
           <div className="space-y-1.5 pt-1">
-            <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-              Available Colors ({product.colors.length}):
+            <div className="flex items-center justify-between text-[11px]">
+              <span className="font-semibold text-slate-400 uppercase tracking-wider">
+                Colors ({product.colors.length}):
+              </span>
+              <span className="text-slate-600 font-medium truncate max-w-[140px]">
+                {currentColor.name}
+              </span>
             </div>
-            <div className="flex items-center gap-2">
-              {product.colors.map((color, idx) => (
-                <span
-                  key={idx}
-                  title={color.name}
-                  className="w-4 h-4 rounded-full border border-slate-300 shadow-2xs block"
-                  style={{ backgroundColor: color.hex }}
-                />
-              ))}
-              <span className="text-[11px] text-slate-500 font-medium ml-1">
-                {product.colors.map((c) => c.name.split(" ")[0]).join(", ")}
+            <div className="flex items-center gap-1.5">
+              {product.colors.map((color, idx) => {
+                const isSelected = idx === selectedColorIndex;
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedColorIndex(idx);
+                    }}
+                    title={`${color.name} (Click to switch preview)`}
+                    className={`w-5 h-5 rounded-full border transition-all ${
+                      isSelected
+                        ? "border-blue-600 ring-2 ring-blue-500/40 scale-110"
+                        : "border-slate-300 hover:scale-105 opacity-80 hover:opacity-100"
+                    }`}
+                    style={{ backgroundColor: color.hex }}
+                    aria-label={`Select ${color.name}`}
+                  />
+                );
+              })}
+              <span className="text-[10px] text-slate-400 font-medium ml-1">
+                (4 views each)
               </span>
             </div>
           </div>
@@ -105,10 +140,10 @@ export default function ProductCard({ product, onOpenDetails }: ProductCardProps
       <div className="p-5 pt-0 grid grid-cols-2 gap-2">
         <button
           type="button"
-          onClick={() => onOpenDetails?.(product)}
+          onClick={() => onOpenDetails?.(product, currentColor.name)}
           className="w-full py-2.5 px-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-lg transition-colors text-center"
         >
-          View Specs
+          View Specs & Gallery
         </button>
 
         <a

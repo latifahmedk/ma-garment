@@ -14,6 +14,7 @@ export default function ProductsClient() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All Products");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedColorName, setSelectedColorName] = useState<string | undefined>(undefined);
 
   // Filter products by category and search
   const filteredProducts = useMemo(() => {
@@ -84,7 +85,10 @@ export default function ProductsClient() {
               <ProductCard
                 key={product.id}
                 product={product}
-                onOpenDetails={(prod) => setSelectedProduct(prod)}
+                onOpenDetails={(prod, color) => {
+                  setSelectedProduct(prod);
+                  setSelectedColorName(color);
+                }}
               />
             ))}
           </div>
@@ -183,7 +187,11 @@ export default function ProductsClient() {
       {/* Modal for detailed specifications */}
       <ProductModal
         product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
+        initialColorName={selectedColorName}
+        onClose={() => {
+          setSelectedProduct(null);
+          setSelectedColorName(undefined);
+        }}
       />
     </div>
   );

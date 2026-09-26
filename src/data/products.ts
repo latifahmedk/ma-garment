@@ -1,5 +1,30 @@
 import { Product } from "@/types";
 
+/**
+ * ============================================================================
+ * MA GARMENTS - PRODUCT CATALOGUE DATA
+ * ============================================================================
+ * 
+ * IMAGE STRUCTURE PER COLOR:
+ * Each color object has an `images` field with exactly 4 detail images:
+ *   1. full   -> Full Pant Image (front / overall silhouette)
+ *   2. waist  -> Waist Detail Image (drawstring, eyelets, waistband stitching)
+ *   3. pocket -> Pocket & Brand Logo Detail Image (zipper, branding, pocket construction)
+ *   4. bottom -> Bottom Detail Image (cuff, hem, ankle finish)
+ * 
+ * RECOMMENDED FOLDER ORGANIZATION:
+ * Place your images in `public/images/products/<product-slug>/<color-slug>/`
+ * For example:
+ *   public/images/products/lycra-4way/black/full.jpg
+ *   public/images/products/lycra-4way/black/waist.jpg
+ *   public/images/products/lycra-4way/black/pocket.jpg
+ *   public/images/products/lycra-4way/black/bottom.jpg
+ * 
+ * For now, all 4 slots point to the existing verified AI-generated images so
+ * that nothing breaks or 404s while you add your photos.
+ * ============================================================================
+ */
+
 export const products: Product[] = [
   {
     id: "prod-001",
@@ -9,13 +34,75 @@ export const products: Product[] = [
     fabric: "220 GSM Imported 4-Way Stretch NS Lycra",
     gsm: 220,
     fit: "Modern Slim-Tapered Athletic Fit",
-    image: "/images/products/lycra-4way-black.jpg",
+    image: "/images/products/4way/royal-blue/4way-royal-blue-full.png",
     featured: true,
     colors: [
-      { name: "Jet Black", hex: "#111827", inStock: true },
-      { name: "Navy Blue", hex: "#1E3A8A", inStock: true },
-      { name: "Anthracite Dark Grey", hex: "#374151", inStock: true },
-      { name: "Olive Army Green", hex: "#365314", inStock: true },
+      {
+        name: "Royal Blue",
+        hex: "#111827",
+        inStock: true,
+        images: {
+          full: "/images/products/4way/royal-blue/4way-royal-blue-full.png",
+          waist: "/images/products/4way/royal-blue/4way-royal-blue-waist.png",
+          pocket: "/images/products/4way/royal-blue/4way-royal-blue-pocket.png",
+          bottom: "/images/products/4way/royal-blue/4way-royal-blue-bottom.png",
+        },
+      },
+      {
+        name: "Charcole Grey",
+        hex: "#1E3A8A",
+        inStock: true,
+        images: {
+          full: "/images/products/4way/charcole-grey/4way-charcole-grey-full.png",
+          waist: "/images/products/4way/charcole-grey/4way-charcole-grey-waist.png",
+          pocket: "/images/products/4way/charcole-grey/4way-charcole-grey-pocket.png",
+          bottom: "/images/products/4way/charcole-grey/4way-charcole-grey-bottom.png",
+        },
+      },
+      {
+        name: "Dark Teal",
+        hex: "#374151",
+        inStock: true,
+        images: {
+          full: "/images/products/4way/dark-teal/4way-dark-teal-full.png",
+          waist: "/images/products/4way/dark-teal/4way-dark-teal-waist.png",
+          pocket: "/images/products/4way/dark-teal/4way-dark-teal-pocket.png",
+          bottom: "/images/products/4way/dark-teal/4way-dark-teal-bottom.png",
+        },
+      },
+      {
+        name: "Olive Green",
+        hex: "#365314",
+        inStock: true,
+        images: {
+          full: "/images/products/4way/olive-green/4way-olive-green-full.png",
+          waist: "/images/products/4way/olive-green/4way-olive-green-waist.png",
+          pocket: "/images/products/4way/olive-green/4way-olive-green-pocket.png",
+          bottom: "/images/products/4way/olive-green/4way-olive-green-bottom.png",
+        },
+      },
+      {
+        name: "Teal Blue",
+        hex: "#365314",
+        inStock: true,
+        images: {
+          full: "/images/products/4way/teal-blue/4way-teal-blue-full.png",
+          waist: "/images/products/4way/teal-blue/4way-teal-blue-waist.png",
+          pocket: "/images/products/4way/teal-blue/4way-teal-blue-pocket.png",
+          bottom: "/images/products/4way/teal-blue/4way-teal-blue-bottom.png",
+        },
+      },
+      {
+        name: "Light Grey",
+        hex: "#365314",
+        inStock: true,
+        images: {
+          full: "/images/products/4way/light-grey/4way-light-grey-full.png",
+          waist: "/images/products/4way/light-grey/4way-light-grey-waist.png",
+          pocket: "/images/products/4way/light-grey/4way-light-grey-pocket.png",
+          bottom: "/images/products/4way/light-grey/4way-light-grey-bottom.png",
+        },
+      },
     ],
     sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)"],
     moq: "100 Pieces (Standard Wholesale Pack - Assorted Sizes)",
@@ -47,10 +134,50 @@ export const products: Product[] = [
     image: "/images/products/cotton-terry-grey.jpg",
     featured: true,
     colors: [
-      { name: "Melange Heather Grey", hex: "#9CA3AF", inStock: true },
-      { name: "Pitch Black", hex: "#111827", inStock: true },
-      { name: "Deep Navy", hex: "#1E293B", inStock: true },
-      { name: "Coffee Brown", hex: "#451A03", inStock: true },
+      {
+        name: "Melange Heather Grey",
+        hex: "#9CA3AF",
+        inStock: true,
+        images: {
+          full: "/images/products/cotton-terry-grey.jpg",
+          waist: "/images/products/cotton-terry-grey.jpg",
+          pocket: "/images/products/cotton-terry-grey.jpg",
+          bottom: "/images/products/cotton-terry-grey.jpg",
+        },
+      },
+      {
+        name: "Pitch Black",
+        hex: "#111827",
+        inStock: true,
+        images: {
+          full: "/images/products/cotton-terry-grey.jpg",
+          waist: "/images/products/cotton-terry-grey.jpg",
+          pocket: "/images/products/cotton-terry-grey.jpg",
+          bottom: "/images/products/cotton-terry-grey.jpg",
+        },
+      },
+      {
+        name: "Deep Navy",
+        hex: "#1E293B",
+        inStock: true,
+        images: {
+          full: "/images/products/cotton-terry-grey.jpg",
+          waist: "/images/products/cotton-terry-grey.jpg",
+          pocket: "/images/products/cotton-terry-grey.jpg",
+          bottom: "/images/products/cotton-terry-grey.jpg",
+        },
+      },
+      {
+        name: "Coffee Brown",
+        hex: "#451A03",
+        inStock: true,
+        images: {
+          full: "/images/products/cotton-terry-grey.jpg",
+          waist: "/images/products/cotton-terry-grey.jpg",
+          pocket: "/images/products/cotton-terry-grey.jpg",
+          bottom: "/images/products/cotton-terry-grey.jpg",
+        },
+      },
     ],
     sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)", "3XL (38-40)"],
     moq: "100 Pieces (Assorted Colors or Single Shade Available)",
@@ -82,10 +209,50 @@ export const products: Product[] = [
     image: "/images/products/dryfit-sports-navy.jpg",
     featured: true,
     colors: [
-      { name: "Navy Blue", hex: "#1E3A8A", inStock: true },
-      { name: "Steel Grey", hex: "#4B5563", inStock: true },
-      { name: "Jet Black", hex: "#111827", inStock: true },
-      { name: "Royal Blue", hex: "#2563EB", inStock: true },
+      {
+        name: "Navy Blue",
+        hex: "#1E3A8A",
+        inStock: true,
+        images: {
+          full: "/images/products/dryfit-sports-navy.jpg",
+          waist: "/images/products/dryfit-sports-navy.jpg",
+          pocket: "/images/products/dryfit-sports-navy.jpg",
+          bottom: "/images/products/dryfit-sports-navy.jpg",
+        },
+      },
+      {
+        name: "Steel Grey",
+        hex: "#4B5563",
+        inStock: true,
+        images: {
+          full: "/images/products/dryfit-sports-navy.jpg",
+          waist: "/images/products/dryfit-sports-navy.jpg",
+          pocket: "/images/products/dryfit-sports-navy.jpg",
+          bottom: "/images/products/dryfit-sports-navy.jpg",
+        },
+      },
+      {
+        name: "Jet Black",
+        hex: "#111827",
+        inStock: true,
+        images: {
+          full: "/images/products/dryfit-sports-navy.jpg",
+          waist: "/images/products/dryfit-sports-navy.jpg",
+          pocket: "/images/products/dryfit-sports-navy.jpg",
+          bottom: "/images/products/dryfit-sports-navy.jpg",
+        },
+      },
+      {
+        name: "Royal Blue",
+        hex: "#2563EB",
+        inStock: true,
+        images: {
+          full: "/images/products/dryfit-sports-navy.jpg",
+          waist: "/images/products/dryfit-sports-navy.jpg",
+          pocket: "/images/products/dryfit-sports-navy.jpg",
+          bottom: "/images/products/dryfit-sports-navy.jpg",
+        },
+      },
     ],
     sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)"],
     moq: "120 Pieces (Assorted sizes / 1 Master Carton)",
@@ -117,10 +284,50 @@ export const products: Product[] = [
     image: "/images/products/cargo-utility-olive.jpg",
     featured: true,
     colors: [
-      { name: "Military Olive Green", hex: "#3F4A3C", inStock: true },
-      { name: "Tactical Black", hex: "#171717", inStock: true },
-      { name: "Khaki Sand", hex: "#A89F81", inStock: true },
-      { name: "Dark Charcoal", hex: "#334155", inStock: true },
+      {
+        name: "Military Olive Green",
+        hex: "#3F4A3C",
+        inStock: true,
+        images: {
+          full: "/images/products/cargo-utility-olive.jpg",
+          waist: "/images/products/cargo-utility-olive.jpg",
+          pocket: "/images/products/cargo-utility-olive.jpg",
+          bottom: "/images/products/cargo-utility-olive.jpg",
+        },
+      },
+      {
+        name: "Tactical Black",
+        hex: "#171717",
+        inStock: true,
+        images: {
+          full: "/images/products/cargo-utility-olive.jpg",
+          waist: "/images/products/cargo-utility-olive.jpg",
+          pocket: "/images/products/cargo-utility-olive.jpg",
+          bottom: "/images/products/cargo-utility-olive.jpg",
+        },
+      },
+      {
+        name: "Khaki Sand",
+        hex: "#A89F81",
+        inStock: true,
+        images: {
+          full: "/images/products/cargo-utility-olive.jpg",
+          waist: "/images/products/cargo-utility-olive.jpg",
+          pocket: "/images/products/cargo-utility-olive.jpg",
+          bottom: "/images/products/cargo-utility-olive.jpg",
+        },
+      },
+      {
+        name: "Dark Charcoal",
+        hex: "#334155",
+        inStock: true,
+        images: {
+          full: "/images/products/cargo-utility-olive.jpg",
+          waist: "/images/products/cargo-utility-olive.jpg",
+          pocket: "/images/products/cargo-utility-olive.jpg",
+          bottom: "/images/products/cargo-utility-olive.jpg",
+        },
+      },
     ],
     sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)"],
     moq: "100 Pieces (Direct from Factory Floor)",
@@ -152,10 +359,50 @@ export const products: Product[] = [
     image: "/images/products/piping-athletic-black.jpg",
     featured: false,
     colors: [
-      { name: "Black with White Piping", hex: "#0F172A", inStock: true },
-      { name: "Navy with Sky Blue Piping", hex: "#1E3A8A", inStock: true },
-      { name: "Charcoal with Red Piping", hex: "#374151", inStock: true },
-      { name: "Black with Neon Lime Piping", hex: "#18181B", inStock: true },
+      {
+        name: "Black with White Piping",
+        hex: "#0F172A",
+        inStock: true,
+        images: {
+          full: "/images/products/piping-athletic-black.jpg",
+          waist: "/images/products/piping-athletic-black.jpg",
+          pocket: "/images/products/piping-athletic-black.jpg",
+          bottom: "/images/products/piping-athletic-black.jpg",
+        },
+      },
+      {
+        name: "Navy with Sky Blue Piping",
+        hex: "#1E3A8A",
+        inStock: true,
+        images: {
+          full: "/images/products/piping-athletic-black.jpg",
+          waist: "/images/products/piping-athletic-black.jpg",
+          pocket: "/images/products/piping-athletic-black.jpg",
+          bottom: "/images/products/piping-athletic-black.jpg",
+        },
+      },
+      {
+        name: "Charcoal with Red Piping",
+        hex: "#374151",
+        inStock: true,
+        images: {
+          full: "/images/products/piping-athletic-black.jpg",
+          waist: "/images/products/piping-athletic-black.jpg",
+          pocket: "/images/products/piping-athletic-black.jpg",
+          bottom: "/images/products/piping-athletic-black.jpg",
+        },
+      },
+      {
+        name: "Black with Neon Lime Piping",
+        hex: "#18181B",
+        inStock: true,
+        images: {
+          full: "/images/products/piping-athletic-black.jpg",
+          waist: "/images/products/piping-athletic-black.jpg",
+          pocket: "/images/products/piping-athletic-black.jpg",
+          bottom: "/images/products/piping-athletic-black.jpg",
+        },
+      },
     ],
     sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)", "3XL (38-40)"],
     moq: "100 Pieces (Standard Wholesale Assorted Carton)",
@@ -187,10 +434,50 @@ export const products: Product[] = [
     image: "/images/products/fleece-winter-charcoal.jpg",
     featured: false,
     colors: [
-      { name: "Anthracite Charcoal Grey", hex: "#374151", inStock: true },
-      { name: "Jet Black", hex: "#0F172A", inStock: true },
-      { name: "Navy Blue", hex: "#1E293B", inStock: true },
-      { name: "Wine / Maroon", hex: "#581C87", inStock: true },
+      {
+        name: "Anthracite Charcoal Grey",
+        hex: "#374151",
+        inStock: true,
+        images: {
+          full: "/images/products/fleece-winter-charcoal.jpg",
+          waist: "/images/products/fleece-winter-charcoal.jpg",
+          pocket: "/images/products/fleece-winter-charcoal.jpg",
+          bottom: "/images/products/fleece-winter-charcoal.jpg",
+        },
+      },
+      {
+        name: "Jet Black",
+        hex: "#0F172A",
+        inStock: true,
+        images: {
+          full: "/images/products/fleece-winter-charcoal.jpg",
+          waist: "/images/products/fleece-winter-charcoal.jpg",
+          pocket: "/images/products/fleece-winter-charcoal.jpg",
+          bottom: "/images/products/fleece-winter-charcoal.jpg",
+        },
+      },
+      {
+        name: "Navy Blue",
+        hex: "#1E293B",
+        inStock: true,
+        images: {
+          full: "/images/products/fleece-winter-charcoal.jpg",
+          waist: "/images/products/fleece-winter-charcoal.jpg",
+          pocket: "/images/products/fleece-winter-charcoal.jpg",
+          bottom: "/images/products/fleece-winter-charcoal.jpg",
+        },
+      },
+      {
+        name: "Wine / Maroon",
+        hex: "#581C87",
+        inStock: true,
+        images: {
+          full: "/images/products/fleece-winter-charcoal.jpg",
+          waist: "/images/products/fleece-winter-charcoal.jpg",
+          pocket: "/images/products/fleece-winter-charcoal.jpg",
+          bottom: "/images/products/fleece-winter-charcoal.jpg",
+        },
+      },
     ],
     sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)"],
     moq: "100 Pieces (Seasonal Bulk Orders)",
