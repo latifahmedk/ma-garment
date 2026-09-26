@@ -39,7 +39,7 @@ export const products: Product[] = [
     colors: [
       {
         name: "Royal Blue",
-        hex: "#111827",
+        hex: "#1D4ED8",
         inStock: true,
         images: {
           full: "/images/products/4way/royal-blue/4way-royal-blue-full.png",
@@ -50,7 +50,7 @@ export const products: Product[] = [
       },
       {
         name: "Charcole Grey",
-        hex: "#1E3A8A",
+        hex: "#3F4249",
         inStock: true,
         images: {
           full: "/images/products/4way/charcole-grey/4way-charcole-grey-full.png",
@@ -61,7 +61,7 @@ export const products: Product[] = [
       },
       {
         name: "Dark Teal",
-        hex: "#374151",
+        hex: "#183E51",
         inStock: true,
         images: {
           full: "/images/products/4way/dark-teal/4way-dark-teal-full.png",
@@ -72,7 +72,7 @@ export const products: Product[] = [
       },
       {
         name: "Olive Green",
-        hex: "#365314",
+        hex: "#3C412E",
         inStock: true,
         images: {
           full: "/images/products/4way/olive-green/4way-olive-green-full.png",
@@ -83,7 +83,7 @@ export const products: Product[] = [
       },
       {
         name: "Teal Blue",
-        hex: "#365314",
+        hex: "#186488",
         inStock: true,
         images: {
           full: "/images/products/4way/teal-blue/4way-teal-blue-full.png",
@@ -94,7 +94,7 @@ export const products: Product[] = [
       },
       {
         name: "Light Grey",
-        hex: "#365314",
+        hex: "#ABACB4",
         inStock: true,
         images: {
           full: "/images/products/4way/light-grey/4way-light-grey-full.png",
