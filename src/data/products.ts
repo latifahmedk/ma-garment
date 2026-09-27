@@ -195,9 +195,20 @@ export const products: Product[] = [
     fabric: "220 GSM Imported Dyson Fine Dotted Lycra",
     gsm: 220,
     fit: "Modern Slim-Tapered Athletic Fit",
-    image: "/images/products/dyson/royal-blue/dyson-royal-blue-full.png",
+    image: "/images/products/dyson/light-grey/dyson-light-grey-full.png",
     featured: true,
     colors: [
+      {
+        name: "Light Grey",
+        hex: "#98999D",
+        inStock: true,
+        images: {
+          full: "/images/products/dyson/light-grey/dyson-light-grey-full.png",
+          waist: "/images/products/dyson/light-grey/dyson-light-grey-waist.png",
+          pocket: "/images/products/dyson/light-grey/dyson-light-grey-pocket.png",
+          bottom: "/images/products/dyson/light-grey/dyson-light-grey-bottom.png",
+        },
+      },
       {
         name: "Royal Blue",
         hex: "#334269",
@@ -251,17 +262,6 @@ export const products: Product[] = [
           waist: "/images/products/dyson/navy-blue/dyson-navy-blue-waist.png",
           pocket: "/images/products/dyson/navy-blue/dyson-navy-blue-pocket.png",
           bottom: "/images/products/dyson/navy-blue/dyson-navy-blue-bottom.png",
-        },
-      },
-      {
-        name: "Light Grey",
-        hex: "#98999D",
-        inStock: true,
-        images: {
-          full: "/images/products/dyson/light-grey/dyson-light-grey-full.png",
-          waist: "/images/products/dyson/light-grey/dyson-light-grey-waist.png",
-          pocket: "/images/products/dyson/light-grey/dyson-light-grey-pocket.png",
-          bottom: "/images/products/dyson/light-grey/dyson-light-grey-bottom.png",
         },
       },
     ],
