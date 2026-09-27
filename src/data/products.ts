@@ -172,18 +172,18 @@ export const products: Product[] = [
     moq: "100 Pieces (Standard Wholesale Pack - Assorted Sizes)",
     packaging: "Individual transparent polybag, 12 pcs inner bundle, 120 pcs master corrugated carton",
     description:
-      "High-demand tactical military camouflage track pants manufactured with premium 220 GSM 4-way stretch NS Lycra. Engineered with authentic military camo print, heavy-gauge elastic waistband with braided drawstring, side zipper pockets with MA Garments branding, and reinforced twin-needle hems for superior athletic durability.",
+      "High-demand tactical military camouflage track pants manufactured with premium 220 GSM 4-way stretch NS Lycra. Engineered with authentic military camo print, heavy-gauge elastic waistband with braided drawstring, deep D-type open scoop pockets with MA Garments branding, and reinforced twin-needle hems for superior athletic durability.",
     specifications: {
       fabricComposition: "88% Micro Polyester, 12% Spandex / 4-Way Stretch Camo Lycra",
       waistband: "45mm heavy-gauge knit elastic with internal flat braided drawstring & reinforced eyelets",
-      pockets: "Dual side scoop pockets with smooth nylon coil zipper welt & MA Garments logo",
+      pockets: "Dual side open D-type scoop pockets with precision MA Garments logo print",
       stitching: "4-thread overlock interlock with double-needle flatlock hems",
       ankleFinish: "Clean straight-cut ankle hem with double-needle topstitching",
     },
     highlights: [
       "Authentic military camouflage print in 3 high-moving colorways",
       "Full 360-degree 4-way elasticity that holds shape after wash",
-      "Concealed zipper pockets with durable auto-lock puller & MA Garments crest",
+      "Deep D-type open scoop pockets with precision MA Garments crest",
       "Factory-standard ratio: 1 M : 2 L : 2 XL : 1 2XL (or custom buyer ratio)",
     ],
   },
