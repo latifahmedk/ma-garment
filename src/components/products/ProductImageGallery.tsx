@@ -42,7 +42,7 @@ export default function ProductImageGallery({
   const colorImagesList = [
     { ...DETAIL_LABELS[0], src: currentColor.images?.full || product.image },
     { ...DETAIL_LABELS[1], src: currentColor.images?.waist || product.image },
-    { ...DETAIL_LABELS[2], src: currentColor.images?.pocket || product.image },
+    { ...DETAIL_LABELS[2], src: currentColor.images?.["side-pocket"] || currentColor.images?.pocket || product.image },
     { ...DETAIL_LABELS[3], src: currentColor.images?.bottom || product.image },
   ];
 

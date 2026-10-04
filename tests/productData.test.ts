@@ -1,0 +1,150 @@
+import { describe, it } from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import { products } from "../src/data/products.js";
+
+describe("Product Data Tests - NS Product", () => {
+  const nsProduct = products.find((p) => p.name === "NS" || p.slug === "ns");
+
+  it("NS product exists in products list", () => {
+    assert.ok(nsProduct, "NS product should exist in products array");
+    assert.strictEqual(nsProduct.name, "NS");
+    assert.strictEqual(nsProduct.id, "prod-004");
+  });
+
+  it("NS has the correct number of colors (exactly 6 colors)", () => {
+    assert.ok(nsProduct);
+    assert.strictEqual(nsProduct.colors.length, 6, "NS must have exactly 6 colors from reference");
+
+    const expectedColors = [
+      "Navy Blue",
+      "Royal Blue",
+      "Black",
+      "Dark Teal",
+      "Light Grey",
+      "Maroon",
+    ];
+
+    const actualColors = nsProduct.colors.map((c) => c.name);
+    assert.deepStrictEqual(actualColors, expectedColors);
+  });
+
+  it("Every NS color has exactly 4 images", () => {
+    assert.ok(nsProduct);
+    for (const color of nsProduct.colors) {
+      const keys = Object.keys(color.images);
+      assert.strictEqual(
+        keys.length,
+        4,
+        `Color "${color.name}" must have exactly 4 image keys, found ${keys.length}`
+      );
+    }
+  });
+
+  it("Every NS color contains: full, waist, side-pocket, and bottom", () => {
+    assert.ok(nsProduct);
+    for (const color of nsProduct.colors) {
+      assert.ok(color.images.full, `Color "${color.name}" must have full image`);
+      assert.ok(color.images.waist, `Color "${color.name}" must have waist image`);
+      assert.ok(color.images["side-pocket"], `Color "${color.name}" must have side-pocket image`);
+      assert.ok(color.images.bottom, `Color "${color.name}" must have bottom image`);
+
+      // Verify strings are non-empty
+      assert.ok(color.images.full.trim().length > 0);
+      assert.ok(color.images.waist.trim().length > 0);
+      assert.ok(color.images["side-pocket"].trim().length > 0);
+      assert.ok(color.images.bottom.trim().length > 0);
+    }
+  });
+
+  it("No duplicate colors in NS", () => {
+    assert.ok(nsProduct);
+    const colorNames = nsProduct.colors.map((c) => c.name.toLowerCase());
+    const uniqueColors = new Set(colorNames);
+    assert.strictEqual(uniqueColors.size, colorNames.length, "Colors must be unique");
+  });
+
+  it("No duplicate image references within any NS color", () => {
+    assert.ok(nsProduct);
+    for (const color of nsProduct.colors) {
+      const paths = [
+        color.images.full,
+        color.images.waist,
+        color.images["side-pocket"],
+        color.images.bottom,
+      ];
+      const uniquePaths = new Set(paths);
+      assert.strictEqual(
+        uniquePaths.size,
+        4,
+        `All 4 images for color "${color.name}" must have unique paths`
+      );
+    }
+  });
+
+  it("All NS image files physically exist on disk in public directory", () => {
+    assert.ok(nsProduct);
+    const publicDir = path.resolve(process.cwd(), "public");
+
+    for (const color of nsProduct.colors) {
+      for (const [view, imgPath] of Object.entries(color.images)) {
+        if (!imgPath) continue;
+        const fullDiskPath = path.join(publicDir, imgPath.replace(/^\//, ""));
+        assert.ok(
+          fs.existsSync(fullDiskPath),
+          `Image file does not exist on disk: ${fullDiskPath} (${color.name} - ${view})`
+        );
+      }
+    }
+  });
+});
+
+describe("All Products Catalog Consistency Tests (1 to 4)", () => {
+  it("Exactly 4 products exist in the catalog", () => {
+    assert.strictEqual(products.length, 4, "Catalog must contain exactly 4 products");
+  });
+
+  it("All 4 products load with valid names and categories", () => {
+    const expectedNames = [
+      "4-Way Athletic Track Pants",
+      "4 Way Military Track Pants",
+      "Dyson Fabric Track Pants",
+      "NS",
+    ];
+
+    products.forEach((prod, idx) => {
+      assert.strictEqual(prod.name, expectedNames[idx]);
+      assert.ok(prod.colors.length > 0);
+      assert.ok(prod.fabric);
+      assert.ok(prod.fit);
+      assert.ok(prod.moq);
+      assert.ok(prod.specifications);
+    });
+  });
+
+  it("Existing Products 1–3 maintain their data integrity and images", () => {
+    const prod1 = products[0];
+    const prod2 = products[1];
+    const prod3 = products[2];
+
+    assert.strictEqual(prod1.colors.length, 6, "Product 1 must have 6 colors");
+    assert.strictEqual(prod2.colors.length, 3, "Product 2 must have 3 colors");
+    assert.strictEqual(prod3.colors.length, 6, "Product 3 must have 6 colors");
+
+    // All images for products 1-3 exist on disk
+    const publicDir = path.resolve(process.cwd(), "public");
+    for (const prod of [prod1, prod2, prod3]) {
+      for (const color of prod.colors) {
+        for (const [view, imgPath] of Object.entries(color.images)) {
+          if (!imgPath) continue;
+          const fullDiskPath = path.join(publicDir, imgPath.replace(/^\//, ""));
+          assert.ok(
+            fs.existsSync(fullDiskPath),
+            `Image for ${prod.name} ${color.name} ${view} missing: ${fullDiskPath}`
+          );
+        }
+      }
+    }
+  });
+});

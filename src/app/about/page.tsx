@@ -151,7 +151,7 @@ export default function AboutPage() {
               Unlike massive garment conglomerates that juggle hundreds of diverse apparel categories, we specialize strictly in track pants. This singular focus allows us to master pattern grading, optimize thread tension for athletic fabrics, source the most durable pocket zippers, and maintain consistent quality across every batch.
             </p>
             <p className="text-slate-600 text-sm leading-relaxed">
-              Our 15–20 employees are experienced textile workers, many of whom have spent over a decade in Mumbai's renowned garment industry. We treat our wholesale clients as long-term partners—when we give an order dispatch date, we deliver on time.
+              Our 15–20 employees are experienced textile workers, many of whom have spent over a decade in Mumbai&apos;s renowned garment industry. We treat our wholesale clients as long-term partners—when we give an order dispatch date, we deliver on time.
             </p>
 
             <div className="pt-2">
@@ -282,7 +282,7 @@ export default function AboutPage() {
               <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span><strong>15 Minutes to Dadar Garment Market:</strong> Rapid daily deliveries to wholesale shops in Dadar and King's Circle.</span>
+                  <span><strong>15 Minutes to Dadar Garment Market:</strong> Rapid daily deliveries to wholesale shops in Dadar and King&apos;s Circle.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />

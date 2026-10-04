@@ -1,8 +1,10 @@
 export interface ProductColorImages {
   full: string; // 1. Full Pant Image
   waist: string; // 2. Waist Detail Image
-  pocket: string; // 3. Pocket + Logo Detail Image
+  pocket?: string; // 3. Pocket + Logo Detail Image
+  "side-pocket"?: string; // 3. Side Pocket Detail Image (for NS)
   bottom: string; // 4. Bottom Detail Image
+  [key: string]: string | undefined;
 }
 
 export interface ProductColor {
