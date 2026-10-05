@@ -18,12 +18,12 @@ describe("Product Data Tests - NS Product", () => {
     assert.strictEqual(nsProduct.colors.length, 6, "NS must have exactly 6 colors from reference");
 
     const expectedColors = [
-      "Navy Blue",
+      "Maroon",
       "Royal Blue",
       "Black",
       "Dark Teal",
       "Light Grey",
-      "Maroon",
+      "Navy Blue",
     ];
 
     const actualColors = nsProduct.colors.map((c) => c.name);
@@ -100,17 +100,120 @@ describe("Product Data Tests - NS Product", () => {
   });
 });
 
-describe("All Products Catalog Consistency Tests (1 to 4)", () => {
-  it("Exactly 4 products exist in the catalog", () => {
-    assert.strictEqual(products.length, 4, "Catalog must contain exactly 4 products");
+describe("Product Data Tests - Coat Common Product", () => {
+  const coatCommonProduct = products.find(
+    (p) => p.name === "Coat Common" || p.slug === "coat-common"
+  );
+
+  it("Coat Common product exists in products list", () => {
+    assert.ok(coatCommonProduct, "Coat Common product should exist in products array");
+    assert.strictEqual(coatCommonProduct.name, "Coat Common");
+    assert.strictEqual(coatCommonProduct.id, "prod-005");
   });
 
-  it("All 4 products load with valid names and categories", () => {
+  it("Coat Common has the correct number of provided colors (exactly 6 colors)", () => {
+    assert.ok(coatCommonProduct);
+    assert.strictEqual(
+      coatCommonProduct.colors.length,
+      6,
+      "Coat Common must have exactly 6 colors from reference"
+    );
+
+    const expectedColors = [
+      "Olive Green",
+      "Black",
+      "Teal Blue",
+      "Royal Blue",
+      "Charcoal Grey",
+      "Navy Blue",
+    ];
+
+    const actualColors = coatCommonProduct.colors.map((c) => c.name);
+    assert.deepStrictEqual(actualColors, expectedColors);
+  });
+
+  it("Every Coat Common color has exactly 4 images", () => {
+    assert.ok(coatCommonProduct);
+    for (const color of coatCommonProduct.colors) {
+      const keys = Object.keys(color.images);
+      assert.strictEqual(
+        keys.length,
+        4,
+        `Color "${color.name}" must have exactly 4 image keys, found ${keys.length}`
+      );
+    }
+  });
+
+  it("Every Coat Common color contains: full, waist, pocket, and bottom", () => {
+    assert.ok(coatCommonProduct);
+    for (const color of coatCommonProduct.colors) {
+      assert.ok(color.images.full, `Color "${color.name}" must have full image`);
+      assert.ok(color.images.waist, `Color "${color.name}" must have waist image`);
+      assert.ok(color.images.pocket, `Color "${color.name}" must have pocket image`);
+      assert.ok(color.images.bottom, `Color "${color.name}" must have bottom image`);
+
+      // Verify strings are non-empty
+      assert.ok(color.images.full.trim().length > 0);
+      assert.ok(color.images.waist.trim().length > 0);
+      assert.ok(color.images.pocket.trim().length > 0);
+      assert.ok(color.images.bottom.trim().length > 0);
+    }
+  });
+
+  it("No duplicate colors in Coat Common", () => {
+    assert.ok(coatCommonProduct);
+    const colorNames = coatCommonProduct.colors.map((c) => c.name.toLowerCase());
+    const uniqueColors = new Set(colorNames);
+    assert.strictEqual(uniqueColors.size, colorNames.length, "Colors must be unique");
+  });
+
+  it("No duplicate image references within any Coat Common color", () => {
+    assert.ok(coatCommonProduct);
+    for (const color of coatCommonProduct.colors) {
+      const paths = [
+        color.images.full,
+        color.images.waist,
+        color.images.pocket,
+        color.images.bottom,
+      ];
+      const uniquePaths = new Set(paths);
+      assert.strictEqual(
+        uniquePaths.size,
+        4,
+        `All 4 images for color "${color.name}" must have unique paths`
+      );
+    }
+  });
+
+  it("All Coat Common image files physically exist on disk in public directory", () => {
+    assert.ok(coatCommonProduct);
+    const publicDir = path.resolve(process.cwd(), "public");
+
+    for (const color of coatCommonProduct.colors) {
+      for (const [view, imgPath] of Object.entries(color.images)) {
+        if (!imgPath) continue;
+        const fullDiskPath = path.join(publicDir, imgPath.replace(/^\//, ""));
+        assert.ok(
+          fs.existsSync(fullDiskPath),
+          `Image file does not exist on disk: ${fullDiskPath} (${color.name} - ${view})`
+        );
+      }
+    }
+  });
+});
+
+describe("All Products Catalog Consistency Tests (1 to 5)", () => {
+  it("Exactly 5 products exist in the catalog", () => {
+    assert.strictEqual(products.length, 5, "Catalog must contain exactly 5 products");
+  });
+
+  it("All 5 products load with valid names and categories", () => {
     const expectedNames = [
       "4-Way Athletic Track Pants",
       "4 Way Military Track Pants",
       "Dyson Fabric Track Pants",
       "NS",
+      "Coat Common",
     ];
 
     products.forEach((prod, idx) => {
@@ -123,18 +226,20 @@ describe("All Products Catalog Consistency Tests (1 to 4)", () => {
     });
   });
 
-  it("Existing Products 1–3 maintain their data integrity and images", () => {
+  it("Existing Products 1–4 maintain their data integrity and images", () => {
     const prod1 = products[0];
     const prod2 = products[1];
     const prod3 = products[2];
+    const prod4 = products[3];
 
     assert.strictEqual(prod1.colors.length, 6, "Product 1 must have 6 colors");
     assert.strictEqual(prod2.colors.length, 3, "Product 2 must have 3 colors");
     assert.strictEqual(prod3.colors.length, 6, "Product 3 must have 6 colors");
+    assert.strictEqual(prod4.colors.length, 6, "Product 4 must have 6 colors");
 
-    // All images for products 1-3 exist on disk
+    // All images for products 1-4 exist on disk
     const publicDir = path.resolve(process.cwd(), "public");
-    for (const prod of [prod1, prod2, prod3]) {
+    for (const prod of [prod1, prod2, prod3, prod4]) {
       for (const color of prod.colors) {
         for (const [view, imgPath] of Object.entries(color.images)) {
           if (!imgPath) continue;

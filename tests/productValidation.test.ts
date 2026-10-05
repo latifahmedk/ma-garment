@@ -137,15 +137,41 @@ describe("Validation Tests - Product & Image Validation Rules", () => {
     assert.ok(result.errors.some((e) => e.includes("must have at least one color")));
   });
 
-  it("All 4 products in catalogue pass validation", () => {
-    assert.strictEqual(products.length, 4);
+  it("Valid Coat Common data passes validation", () => {
+    const coatCommonProduct = products.find((p) => p.name === "Coat Common")!;
+    assert.ok(coatCommonProduct, "Coat Common must exist");
+    const result = validateProduct(coatCommonProduct);
+    assert.strictEqual(
+      result.valid,
+      true,
+      `Coat Common should pass validation: ${result.errors.join(", ")}`
+    );
+    assert.strictEqual(result.errors.length, 0);
+    assert.doesNotThrow(() => assertValidProduct(coatCommonProduct));
+  });
+
+  it("Coat Common missing Pocket image fails validation", () => {
+    const coatCommonProduct = products.find((p) => p.name === "Coat Common")!;
+    const invalidCoat: Product = JSON.parse(JSON.stringify(coatCommonProduct));
+    delete (invalidCoat.colors[0].images as Record<string, unknown>).pocket;
+
+    const result = validateProduct(invalidCoat);
+    assert.strictEqual(result.valid, false);
+    assert.ok(
+      result.errors.some((e) => e.includes("Missing Pocket")),
+      `Expected 'Missing Pocket' error, got: ${result.errors.join("; ")}`
+    );
+  });
+
+  it("All 5 products in catalogue pass validation", () => {
+    assert.strictEqual(products.length, 5, "Catalog must contain exactly 5 products");
 
     const overallResult = validateAllProducts(products);
     assert.strictEqual(
       overallResult.valid,
       true,
-      `All 4 products must pass validation: ${overallResult.errors.join("; ")}`
+      `All 5 products must pass validation: ${overallResult.errors.join("; ")}`
     );
-    assert.strictEqual(overallResult.productCount, 4);
+    assert.strictEqual(overallResult.productCount, 5);
   });
 });

@@ -68,7 +68,7 @@ describe("Gallery Behavior Tests - NS Product", () => {
 
   it("NS loads correctly with initial color", () => {
     const gallery = new GalleryModel(nsProduct, 0);
-    assert.strictEqual(gallery.currentColor.name, "Navy Blue");
+    assert.strictEqual(gallery.currentColor.name, "Maroon");
     assert.strictEqual(gallery.colorImagesList.length, 4);
   });
 
@@ -76,14 +76,14 @@ describe("Gallery Behavior Tests - NS Product", () => {
     const gallery = new GalleryModel(nsProduct, 0);
     assert.strictEqual(gallery.activeImageIndex, 0);
     assert.strictEqual(gallery.currentActiveImage.key, "full");
-    assert.ok(gallery.currentActiveImage.src.includes("ns-navy-blue-full.png"));
+    assert.ok(gallery.currentActiveImage.src.includes("ns-maroon-full.png"));
   });
 
   it("Selecting a color changes the gallery images to that color's images", () => {
     const gallery = new GalleryModel(nsProduct, 0);
 
-    // Initial is Navy Blue
-    assert.ok(gallery.currentActiveImage.src.includes("navy-blue"));
+    // Initial is Maroon
+    assert.ok(gallery.currentActiveImage.src.includes("maroon"));
 
     // Select color index 2: Black
     gallery.selectColor(2);
@@ -104,14 +104,14 @@ describe("Gallery Behavior Tests - NS Product", () => {
     assert.strictEqual(gallery.activeImageIndex, 3);
     assert.strictEqual(gallery.currentActiveImage.key, "bottom");
 
-    // Change color to Maroon (index 5)
+    // Change color to Navy Blue (index 5)
     gallery.selectColor(5);
-    assert.strictEqual(gallery.currentColor.name, "Maroon");
+    assert.strictEqual(gallery.currentColor.name, "Navy Blue");
 
     // Must be reset to index 0 (Full)
     assert.strictEqual(gallery.activeImageIndex, 0, "Color change must reset active image to Full");
     assert.strictEqual(gallery.currentActiveImage.key, "full");
-    assert.ok(gallery.currentActiveImage.src.includes("ns-maroon-full.png"));
+    assert.ok(gallery.currentActiveImage.src.includes("ns-navy-blue-full.png"));
   });
 
   it("Correct 4 images are displayed for the selected color", () => {
@@ -191,7 +191,135 @@ describe("Gallery Behavior Tests - NS Product", () => {
   });
 });
 
-describe("Gallery Behavior Across All 4 Products", () => {
+describe("Gallery Behavior Tests - Coat Common Product", () => {
+  const coatCommonProduct = products.find((p) => p.name === "Coat Common")!;
+
+  it("Coat Common loads correctly with initial color (Olive Green)", () => {
+    const gallery = new GalleryModel(coatCommonProduct, 0);
+    assert.strictEqual(gallery.currentColor.name, "Olive Green");
+    assert.strictEqual(gallery.colorImagesList.length, 4);
+  });
+
+  it("First selected image is Full", () => {
+    const gallery = new GalleryModel(coatCommonProduct, 0);
+    assert.strictEqual(gallery.activeImageIndex, 0);
+    assert.strictEqual(gallery.currentActiveImage.key, "full");
+    assert.ok(gallery.currentActiveImage.src.includes("coat-common-olive-green-full.png"));
+  });
+
+  it("Selecting a color changes the gallery images to that color's images", () => {
+    const gallery = new GalleryModel(coatCommonProduct, 0);
+
+    // Initial is Olive Green
+    assert.ok(gallery.currentActiveImage.src.includes("olive-green"));
+
+    // Select color index 1: Black
+    gallery.selectColor(1);
+    assert.strictEqual(gallery.currentColor.name, "Black");
+
+    const images = gallery.colorImagesList.map((img) => img.src);
+    assert.ok(images[0].includes("coat-common-black-full.png"));
+    assert.ok(images[1].includes("coat-common-black-waist.png"));
+    assert.ok(images[2].includes("coat-common-black-pocket.png"));
+    assert.ok(images[3].includes("coat-common-black-bottom.png"));
+  });
+
+  it("Changing color resets the active image to Full", () => {
+    const gallery = new GalleryModel(coatCommonProduct, 0);
+
+    // Navigate to bottom view (index 3)
+    gallery.selectImage(3);
+    assert.strictEqual(gallery.activeImageIndex, 3);
+    assert.strictEqual(gallery.currentActiveImage.key, "bottom");
+
+    // Change color to Royal Blue (index 3)
+    gallery.selectColor(3);
+    assert.strictEqual(gallery.currentColor.name, "Royal Blue");
+
+    // Must be reset to index 0 (Full)
+    assert.strictEqual(gallery.activeImageIndex, 0, "Color change must reset active image to Full");
+    assert.strictEqual(gallery.currentActiveImage.key, "full");
+    assert.ok(gallery.currentActiveImage.src.includes("coat-common-royal-blue-full.png"));
+  });
+
+  it("Correct 4 images are displayed for the selected color", () => {
+    const gallery = new GalleryModel(coatCommonProduct);
+
+    coatCommonProduct.colors.forEach((color, colorIdx) => {
+      gallery.selectColor(colorIdx);
+      const list = gallery.colorImagesList;
+
+      assert.strictEqual(list.length, 4);
+      assert.strictEqual(list[0].key, "full");
+      assert.strictEqual(list[1].key, "waist");
+      assert.strictEqual(list[2].key, "side-pocket");
+      assert.strictEqual(list[3].key, "bottom");
+
+      assert.strictEqual(list[0].src, color.images.full);
+      assert.strictEqual(list[1].src, color.images.waist);
+      assert.strictEqual(list[2].src, color.images.pocket);
+      assert.strictEqual(list[3].src, color.images.bottom);
+    });
+  });
+
+  it("Images from another color are not displayed", () => {
+    const gallery = new GalleryModel(coatCommonProduct);
+
+    coatCommonProduct.colors.forEach((color, colorIdx) => {
+      gallery.selectColor(colorIdx);
+      const currentListSrcs = new Set(gallery.colorImagesList.map((i) => i.src));
+
+      // Compare with all other colors
+      coatCommonProduct.colors.forEach((otherColor, otherIdx) => {
+        if (colorIdx === otherIdx) return;
+
+        const otherSrcs = [
+          otherColor.images.full,
+          otherColor.images.waist,
+          otherColor.images.pocket,
+          otherColor.images.bottom,
+        ];
+
+        for (const otherSrc of otherSrcs) {
+          if (!otherSrc) continue;
+          assert.ok(
+            !currentListSrcs.has(otherSrc),
+            `Color ${color.name} gallery must NOT contain images from ${otherColor.name}: ${otherSrc}`
+          );
+        }
+      });
+    });
+  });
+
+  it("Next and Previous thumbnail navigation work correctly", () => {
+    const gallery = new GalleryModel(coatCommonProduct, 0);
+
+    // Initial = 0 (full)
+    assert.strictEqual(gallery.activeImageIndex, 0);
+
+    // Next -> 1 (waist)
+    gallery.nextImage();
+    assert.strictEqual(gallery.activeImageIndex, 1);
+
+    // Next -> 2 (pocket)
+    gallery.nextImage();
+    assert.strictEqual(gallery.activeImageIndex, 2);
+
+    // Next -> 3 (bottom)
+    gallery.nextImage();
+    assert.strictEqual(gallery.activeImageIndex, 3);
+
+    // Next wraps to 0 (full)
+    gallery.nextImage();
+    assert.strictEqual(gallery.activeImageIndex, 0);
+
+    // Prev wraps to 3 (bottom)
+    gallery.prevImage();
+    assert.strictEqual(gallery.activeImageIndex, 3);
+  });
+});
+
+describe("Gallery Behavior Across All 5 Products", () => {
   it("Every product initializes gallery with Full image at index 0", () => {
     for (const prod of products) {
       const gallery = new GalleryModel(prod, 0);
