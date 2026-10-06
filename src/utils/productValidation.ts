@@ -34,7 +34,12 @@ export function validateProduct(
   }
 
   const productName = product.name.trim();
-  const isNs = productName.toLowerCase() === "ns" || options.strictSidePocket;
+  const isNs =
+    productName.toLowerCase() === "ns" ||
+    productName.toLowerCase() === "ns fabric" ||
+    productName.toLowerCase() === "ns-fabric" ||
+    productName.toLowerCase().startsWith("ns") ||
+    options.strictSidePocket;
 
   // 2. Category, fabric, fit checks
   if (!product.category || typeof product.category !== "string") {

@@ -24,6 +24,7 @@ export default function ProductsClient() {
       const matchSearch =
         searchQuery === "" ||
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.slug.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.fabric.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.category.toLowerCase().includes(searchQuery.toLowerCase());
       return matchCategory && matchSearch;

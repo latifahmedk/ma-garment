@@ -5,11 +5,13 @@ import path from "node:path";
 import { products, productCategories } from "../src/data/products.js";
 
 describe("Product Data Tests - NS Product", () => {
-  const nsProduct = products.find((p) => p.name === "NS" || p.slug === "ns");
+  const nsProduct = products.find(
+    (p) => p.name === "NS Fabric" || p.name === "NS" || p.slug === "ns-fabric" || p.slug === "ns"
+  );
 
-  it("NS product exists in products list", () => {
-    assert.ok(nsProduct, "NS product should exist in products array");
-    assert.strictEqual(nsProduct.name, "NS");
+  it("NS Fabric product exists in products list", () => {
+    assert.ok(nsProduct, "NS Fabric product should exist in products array");
+    assert.strictEqual(nsProduct.name, "NS Fabric");
     assert.strictEqual(nsProduct.id, "prod-004");
   });
 
@@ -212,7 +214,7 @@ describe("All Products Catalog Consistency Tests (1 to 5)", () => {
       "4-Way Athletic Track Pants",
       "4 Way Military Track Pants",
       "Dyson Fabric Track Pants",
-      "NS",
+      "NS Fabric",
       "Code Common",
     ];
 
@@ -220,7 +222,7 @@ describe("All Products Catalog Consistency Tests (1 to 5)", () => {
       "4-Way Lycra",
       "4-Way Military",
       "Dyson Fabric",
-      "NS",
+      "NS Fabric",
       "Code Common",
     ];
 
@@ -241,7 +243,7 @@ describe("All Products Catalog Consistency Tests (1 to 5)", () => {
       "4-Way Lycra",
       "4-Way Military",
       "Dyson Fabric",
-      "NS",
+      "NS Fabric",
       "Code Common",
     ];
     assert.deepStrictEqual(Array.from(productCategories), expectedCategoriesList);
@@ -279,6 +281,30 @@ describe("All Products Catalog Consistency Tests (1 to 5)", () => {
     for (const cat of specificCategories) {
       const matched = products.filter((p) => p.category === cat);
       assert.strictEqual(matched.length >= 1, true, `Category "${cat}" must have at least one product`);
+    }
+  });
+
+  it("All catalogue images collected for preloading physically exist on disk", () => {
+    const publicDir = path.resolve(process.cwd(), "public");
+    const allImages: string[] = [];
+
+    products.forEach((prod) => {
+      if (prod.image) allImages.push(prod.image);
+      prod.colors.forEach((col) => {
+        Object.values(col.images || {}).forEach((src) => {
+          if (src) allImages.push(src);
+        });
+      });
+    });
+
+    assert.ok(allImages.length > 0, "Catalogue must contain images to preload");
+
+    for (const imgPath of allImages) {
+      const fullDiskPath = path.join(publicDir, imgPath.replace(/^\//, ""));
+      assert.ok(
+        fs.existsSync(fullDiskPath),
+        `Preload image missing from disk: ${fullDiskPath}`
+      );
     }
   });
 });

@@ -55,7 +55,7 @@ export default function JsonLd() {
       "4-Way Lycra Track Pants",
       "4-Way Military Track Pants",
       "Dyson Fabric Track Pants",
-      "NS Track Pants",
+      "NS Fabric Track Pants",
       "Code Common Track Pants",
     ],
   };

@@ -35,6 +35,18 @@ export default function ProductImageGallery({
     setActiveImageIndex(0);
   }, [selectedColorIndex]);
 
+  // Eagerly preload all color images for this product into browser cache
+  useEffect(() => {
+    product.colors.forEach((col) => {
+      Object.values(col.images || {}).forEach((src) => {
+        if (src) {
+          const img = new window.Image();
+          img.src = src;
+        }
+      });
+    });
+  }, [product]);
+
   // Safe color access
   const currentColor = product.colors[selectedColorIndex] || product.colors[0];
 
@@ -94,6 +106,12 @@ export default function ProductImageGallery({
                 key={idx}
                 type="button"
                 onClick={() => onSelectColor(idx)}
+                onMouseEnter={() => {
+                  if (color.images?.full) {
+                    const img = new window.Image();
+                    img.src = color.images.full;
+                  }
+                }}
                 className={`group flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs transition-all border ${
                   isSelected
                     ? "bg-slate-900 text-white border-slate-900 shadow-xs font-semibold ring-2 ring-blue-500/40"

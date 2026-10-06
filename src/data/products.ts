@@ -286,9 +286,9 @@ export const products: Product[] = [
   },
   {
     id: "prod-004",
-    name: "NS",
-    slug: "ns",
-    category: "NS",
+    name: "NS Fabric",
+    slug: "ns-fabric",
+    category: "NS Fabric",
     fabric: "200 GSM Imported NS Micro-Stretch Parachute Fabric",
     gsm: 200,
     fit: "Modern Slim-Tapered Athletic Cargo Jogger Fit",
@@ -485,6 +485,6 @@ export const productCategories = [
   "4-Way Lycra",
   "4-Way Military",
   "Dyson Fabric",
-  "NS",
+  "NS Fabric",
   "Code Common",
 ] as const;

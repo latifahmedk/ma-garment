@@ -18,6 +18,7 @@ export type ProductCategory =
   | "4-Way Lycra"
   | "4-Way Military"
   | "Dyson Fabric"
+  | "NS Fabric"
   | "NS"
   | "Code Common";
 

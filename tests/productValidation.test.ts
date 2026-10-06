@@ -9,7 +9,9 @@ import {
 import { Product } from "../src/types/index.js";
 
 describe("Validation Tests - Product & Image Validation Rules", () => {
-  const nsProduct = products.find((p) => p.name === "NS")!;
+  const nsProduct = products.find(
+    (p) => p.name === "NS Fabric" || p.name === "NS" || p.slug === "ns-fabric" || p.slug === "ns"
+  )!;
 
   it("Valid NS data passes validation", () => {
     const result = validateProduct(nsProduct);

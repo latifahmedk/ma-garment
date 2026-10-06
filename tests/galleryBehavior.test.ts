@@ -64,7 +64,9 @@ class GalleryModel {
 }
 
 describe("Gallery Behavior Tests - NS Product", () => {
-  const nsProduct = products.find((p) => p.name === "NS")!;
+  const nsProduct = products.find(
+    (p) => p.name === "NS Fabric" || p.name === "NS" || p.slug === "ns-fabric" || p.slug === "ns"
+  )!;
 
   it("NS loads correctly with initial color", () => {
     const gallery = new GalleryModel(nsProduct, 0);

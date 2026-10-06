@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import JsonLd from "@/components/seo/JsonLd";
+import CatalogueImagePreloader from "@/components/products/CatalogueImagePreloader";
 import { siteConfig } from "@/config/site";
 
 const inter = Inter({
@@ -87,6 +88,9 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className="min-h-screen flex flex-col font-sans bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
+        {/* Background Catalogue Image Preloader */}
+        <CatalogueImagePreloader />
+
         {/* Top Wholesale B2B Notice */}
         <TopNoticeBanner />
 

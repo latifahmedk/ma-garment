@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Product } from "@/types";
 import { MessageCircle } from "lucide-react";
@@ -19,6 +19,16 @@ export default function ProductCard({ product, onOpenDetails }: ProductCardProps
   const whatsappInquiryUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(
     `Hello MA Garments! I am interested in wholesale pricing for your "${product.name}" in ${currentColor.name} (${product.fabric}, MOQ: ${product.moq}). Please share catalog & bulk quotation.`
   )}`;
+
+  // Eagerly preload this card's color variants so swatch clicks are instant
+  useEffect(() => {
+    product.colors.forEach((col) => {
+      if (col.images?.full) {
+        const img = new window.Image();
+        img.src = col.images.full;
+      }
+    });
+  }, [product]);
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-2xs hover:shadow-lg hover:border-blue-300 transition-all duration-300 flex flex-col justify-between group">
@@ -99,6 +109,12 @@ export default function ProductCard({ product, onOpenDetails }: ProductCardProps
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedColorIndex(idx);
+                    }}
+                    onMouseEnter={() => {
+                      if (color.images?.full) {
+                        const img = new window.Image();
+                        img.src = color.images.full;
+                      }
                     }}
                     title={`${color.name} (Click to switch preview)`}
                     className={`w-5 h-5 rounded-full border transition-all ${
