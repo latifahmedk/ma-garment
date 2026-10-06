@@ -41,7 +41,7 @@ export default function AboutPage() {
     {
       num: "02",
       title: "Master Pattern Grading & Spreading",
-      desc: "Our cutting master lays multi-tiered fabric plies on our 30-foot cutting table. Patterns for sizes M, L, XL, and 2XL are marked with millimeter precision to ensure exact rise, inseam, and waist measurements across all pieces.",
+      desc: "Our cutting master lays multi-tiered fabric plies on our 30-foot cutting table. Patterns for sizes M, L, and XL are marked with millimeter precision to ensure exact rise, inseam, and waist measurements across all pieces.",
     },
     {
       num: "03",
@@ -115,7 +115,7 @@ export default function AboutPage() {
               Active Wholesale Clients
             </span>
             <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-              10–15 Wholesalers
+              15–20 Wholesalers
             </div>
             <p className="text-xs text-slate-500">
               Regular monthly buyers across Maharashtra & India

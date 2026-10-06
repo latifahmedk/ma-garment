@@ -20,12 +20,12 @@ describe("Product Data Tests - NS Product", () => {
     assert.strictEqual(nsProduct.colors.length, 6, "NS must have exactly 6 colors from reference");
 
     const expectedColors = [
+      "Navy Blue",
       "Maroon",
       "Royal Blue",
       "Black",
       "Dark Teal",
       "Light Grey",
-      "Navy Blue",
     ];
 
     const actualColors = nsProduct.colors.map((c) => c.name);

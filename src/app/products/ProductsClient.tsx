@@ -7,7 +7,7 @@ import { Product } from "@/types";
 import ProductCard from "@/components/products/ProductCard";
 import ProductModal from "@/components/products/ProductModal";
 import ProductFilters from "@/components/products/ProductFilters";
-import { ShieldCheck, Package, MessageCircle, FileText, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Package, MessageCircle, FileText, CheckCircle2, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export default function ProductsClient() {
@@ -122,7 +122,7 @@ export default function ProductsClient() {
               Wholesale Buyer Guidelines
             </span>
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
-              How To Order Wholesale & Request Quality Samples
+              How To Order Wholesale & Place Your Order
             </h2>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
               We operate exclusively on a B2B basis with verified wholesale traders, shop owners, and garment distributors. We do not sell loose single pieces to retail consumers.
@@ -144,9 +144,16 @@ export default function ProductsClient() {
               <span className="w-7 h-7 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center">
                 2
               </span>
-              <h3 className="font-bold text-sm text-white">Step 2: Sample Testing</h3>
+              <h3 className="font-bold text-sm text-white">Step 2: Make Order on Phone Call</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                We courier physical sample pieces for fabric feel, stitching inspection, and sizing approval before bulk production commitment.
+                Make an order on phone call for your selected products directly with our factory at{" "}
+                <a
+                  href={`tel:${siteConfig.contact.phoneCall}`}
+                  className="text-blue-400 hover:underline font-semibold"
+                >
+                  {siteConfig.contact.phoneDisplay}
+                </a>{" "}
+                to finalize colors, size ratios, and dispatch timing.
               </p>
             </div>
 
@@ -163,23 +170,31 @@ export default function ProductsClient() {
 
           {/* Direct CTA Buttons */}
           <div className="pt-4 flex flex-col sm:flex-row items-center gap-3">
+            <a
+              href={`tel:${siteConfig.contact.phoneCall}`}
+              className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm rounded-lg transition-colors flex items-center justify-center gap-2 text-center"
+            >
+              <Phone className="w-4 h-4" />
+              <span>Call Us: {siteConfig.contact.phoneDisplay}</span>
+            </a>
+
             <Link
               href="/contact"
-              className="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm rounded-lg transition-colors text-center"
+              className="w-full sm:w-auto px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs sm:text-sm rounded-lg transition-colors text-center border border-slate-700"
             >
               Submit Detailed Wholesale Order
             </Link>
 
             <a
               href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(
-                "Hello MA Garments Sion! I am reviewing your wholesale catalogue and would like to request the wholesale price list and sample details."
+                "Hello MA Garments Sion! I am reviewing your wholesale catalogue and would like to place an order for selected products."
               )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm rounded-lg transition-colors flex items-center justify-center gap-2 text-center"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp Us for Price Card</span>
+              <span>WhatsApp Direct Order</span>
             </a>
           </div>
         </div>

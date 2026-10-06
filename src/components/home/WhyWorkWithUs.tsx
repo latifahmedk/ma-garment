@@ -8,7 +8,7 @@ export default function WhyWorkWithUs() {
     {
       icon: Scissors,
       title: "Consistent Pattern Grading & Fitting",
-      desc: "Our master cutting table operates with precision acrylic stencils. Sizes M, L, XL, and 2XL maintain uniform waist, rise, and thigh dimensions batch after batch.",
+      desc: "Our master cutting table operates with precision acrylic stencils. Sizes M, L, and XL maintain uniform waist, rise, and thigh dimensions batch after batch.",
     },
     {
       icon: ShieldCheck,

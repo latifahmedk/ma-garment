@@ -70,7 +70,7 @@ describe("Gallery Behavior Tests - NS Product", () => {
 
   it("NS loads correctly with initial color", () => {
     const gallery = new GalleryModel(nsProduct, 0);
-    assert.strictEqual(gallery.currentColor.name, "Maroon");
+    assert.strictEqual(gallery.currentColor.name, "Navy Blue");
     assert.strictEqual(gallery.colorImagesList.length, 4);
   });
 
@@ -78,17 +78,17 @@ describe("Gallery Behavior Tests - NS Product", () => {
     const gallery = new GalleryModel(nsProduct, 0);
     assert.strictEqual(gallery.activeImageIndex, 0);
     assert.strictEqual(gallery.currentActiveImage.key, "full");
-    assert.ok(gallery.currentActiveImage.src.includes("ns-maroon-full.png"));
+    assert.ok(gallery.currentActiveImage.src.includes("ns-navy-blue-full.png"));
   });
 
   it("Selecting a color changes the gallery images to that color's images", () => {
     const gallery = new GalleryModel(nsProduct, 0);
 
-    // Initial is Maroon
-    assert.ok(gallery.currentActiveImage.src.includes("maroon"));
+    // Initial is Navy Blue
+    assert.ok(gallery.currentActiveImage.src.includes("navy-blue"));
 
-    // Select color index 2: Black
-    gallery.selectColor(2);
+    // Select color index 3: Black
+    gallery.selectColor(3);
     assert.strictEqual(gallery.currentColor.name, "Black");
 
     const images = gallery.colorImagesList.map((img) => img.src);
@@ -106,14 +106,14 @@ describe("Gallery Behavior Tests - NS Product", () => {
     assert.strictEqual(gallery.activeImageIndex, 3);
     assert.strictEqual(gallery.currentActiveImage.key, "bottom");
 
-    // Change color to Navy Blue (index 5)
-    gallery.selectColor(5);
-    assert.strictEqual(gallery.currentColor.name, "Navy Blue");
+    // Change color to Maroon (index 1)
+    gallery.selectColor(1);
+    assert.strictEqual(gallery.currentColor.name, "Maroon");
 
     // Must be reset to index 0 (Full)
     assert.strictEqual(gallery.activeImageIndex, 0, "Color change must reset active image to Full");
     assert.strictEqual(gallery.currentActiveImage.key, "full");
-    assert.ok(gallery.currentActiveImage.src.includes("ns-navy-blue-full.png"));
+    assert.ok(gallery.currentActiveImage.src.includes("ns-maroon-full.png"));
   });
 
   it("Correct 4 images are displayed for the selected color", () => {

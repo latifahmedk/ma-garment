@@ -177,17 +177,20 @@ Please send me wholesale bulk price per piece and sample terms.`
                 Standard Size Assortment
               </span>
               <div className="flex flex-wrap gap-1.5">
-                {product.sizes.map((s, i) => (
-                  <span
-                    key={i}
-                    className="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded text-slate-800"
-                  >
-                    {s}
-                  </span>
-                ))}
+                {product.sizes
+                  .map((s) => s.split(" ")[0].trim())
+                  .filter((s) => ["M", "L", "XL"].includes(s.toUpperCase()))
+                  .map((s, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 text-xs font-semibold bg-white border border-slate-300 rounded text-slate-800 shadow-2xs"
+                    >
+                      {s}
+                    </span>
+                  ))}
               </div>
               <p className="text-[11px] text-slate-400">
-                *Custom ratio (M:L:XL:2XL) available for orders exceeding 300 pieces.
+                *Custom ratio (M:L:XL) available for orders exceeding 300 pieces.
               </p>
             </div>
 

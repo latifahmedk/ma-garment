@@ -164,7 +164,7 @@ export default function ContactPage() {
               <ul className="space-y-3 text-xs text-slate-300">
                 <li className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                  <span><strong>Minimum Order Quantity (MOQ):</strong> 100 pieces per style. Carton packaging with standard size breakdown (M, L, XL, 2XL).</span>
+                  <span><strong>Minimum Order Quantity (MOQ):</strong> 100 pieces per style. Carton packaging with standard size breakdown (M, L, XL).</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />

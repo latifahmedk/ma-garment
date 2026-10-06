@@ -104,7 +104,7 @@ export const products: Product[] = [
         },
       },
     ],
-    sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)"],
+    sizes: ["M", "L", "XL"],
     moq: "100 Pieces (Standard Wholesale Pack - Assorted Sizes)",
     packaging: "Individual transparent polybag, 12 pcs inner bundle, 120 pcs master corrugated carton",
     description:
@@ -120,7 +120,7 @@ export const products: Product[] = [
       "Water-repellent & sweat-wicking NS fabric",
       "Full 360-degree 4-way elasticity that holds shape after wash",
       "Dual deep zipper pockets capable of holding large smartphones securely",
-      "Factory-standard ratio: 1 M : 2 L : 2 XL : 1 2XL (or custom buyer ratio)",
+      "Factory-standard ratio: 1 M : 2 L : 1 XL (or custom buyer ratio)",
     ],
   },
   {
@@ -168,7 +168,7 @@ export const products: Product[] = [
         },
       },
     ],
-    sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)"],
+    sizes: ["M", "L", "XL"],
     moq: "100 Pieces (Standard Wholesale Pack - Assorted Sizes)",
     packaging: "Individual transparent polybag, 12 pcs inner bundle, 120 pcs master corrugated carton",
     description:
@@ -184,7 +184,7 @@ export const products: Product[] = [
       "Authentic military camouflage print in 3 high-moving colorways",
       "Full 360-degree 4-way elasticity that holds shape after wash",
       "Deep D-type open scoop pockets with precision MA Garments crest",
-      "Factory-standard ratio: 1 M : 2 L : 2 XL : 1 2XL (or custom buyer ratio)",
+      "Factory-standard ratio: 1 M : 2 L : 1 XL (or custom buyer ratio)",
     ],
   },
   {
@@ -265,7 +265,7 @@ export const products: Product[] = [
         },
       },
     ],
-    sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)"],
+    sizes: ["M", "L", "XL"],
     moq: "100 Pieces (Standard Wholesale Pack - Assorted Sizes)",
     packaging: "Individual transparent polybag, 12 pcs inner bundle, 120 pcs master corrugated carton",
     description:
@@ -281,7 +281,7 @@ export const products: Product[] = [
       "Distinctive Dyson micro-dotted textured fabric visible at all angles",
       "Full 360-degree 4-way elasticity that holds shape after wash",
       "Dual D-type scoop pockets with secondary zipper pocket & authentic badge",
-      "Factory-standard ratio: 1 M : 2 L : 2 XL : 1 2XL (or custom buyer ratio)",
+      "Factory-standard ratio: 1 M : 2 L : 1 XL (or custom buyer ratio)",
     ],
   },
   {
@@ -292,9 +292,20 @@ export const products: Product[] = [
     fabric: "200 GSM Imported NS Micro-Stretch Parachute Fabric",
     gsm: 200,
     fit: "Modern Slim-Tapered Athletic Cargo Jogger Fit",
-    image: "/images/products/ns/maroon/ns-maroon-full.png",
+    image: "/images/products/ns/navy-blue/ns-navy-blue-full.png",
     featured: true,
     colors: [
+      {
+        name: "Navy Blue",
+        hex: "#21233A",
+        inStock: true,
+        images: {
+          full: "/images/products/ns/navy-blue/ns-navy-blue-full.png",
+          waist: "/images/products/ns/navy-blue/ns-navy-blue-waist.png",
+          "side-pocket": "/images/products/ns/navy-blue/ns-navy-blue-side-pocket.png",
+          bottom: "/images/products/ns/navy-blue/ns-navy-blue-bottom.png",
+        },
+      },
       {
         name: "Maroon",
         hex: "#4A1521",
@@ -350,19 +361,8 @@ export const products: Product[] = [
           bottom: "/images/products/ns/light-grey/ns-light-grey-bottom.png",
         },
       },
-      {
-        name: "Navy Blue",
-        hex: "#21233A",
-        inStock: true,
-        images: {
-          full: "/images/products/ns/navy-blue/ns-navy-blue-full.png",
-          waist: "/images/products/ns/navy-blue/ns-navy-blue-waist.png",
-          "side-pocket": "/images/products/ns/navy-blue/ns-navy-blue-side-pocket.png",
-          bottom: "/images/products/ns/navy-blue/ns-navy-blue-bottom.png",
-        },
-      },
     ],
-    sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)"],
+    sizes: ["M", "L", "XL"],
     moq: "100 Pieces (Standard Wholesale Pack - Assorted Sizes)",
     packaging: "Individual transparent polybag, 12 pcs inner bundle, 120 pcs master corrugated carton",
     description:
@@ -378,7 +378,7 @@ export const products: Product[] = [
       "Technical NS micro-stretch parachute fabric offering crisp texture and lightweight mobility",
       "Ruched gathered waistband with white contrast drawcord and cuffed jogger hems",
       "Dual slash welt pockets + dual mid-thigh cargo flap pockets on both sides with signature SPORTS 26 badge",
-      "Factory-standard ratio: 1 M : 2 L : 2 XL : 1 2XL (or custom buyer ratio)",
+      "Factory-standard ratio: 1 M : 2 L : 1 XL (or custom buyer ratio)",
     ],
   },
   {
@@ -459,7 +459,7 @@ export const products: Product[] = [
         },
       },
     ],
-    sizes: ["M (30-32)", "L (32-34)", "XL (34-36)", "2XL (36-38)"],
+    sizes: ["M", "L", "XL"],
     moq: "100 Pieces (Standard Wholesale Pack - Assorted Sizes)",
     packaging: "Individual transparent polybag, 12 pcs inner bundle, 120 pcs master corrugated carton",
     description:
@@ -475,7 +475,7 @@ export const products: Product[] = [
       "Distinctive horizontal micro-ribbed striated melange weave offering rich athletic texture",
       "Dual curved D-type scoop pockets with secondary horizontal coin zipper pocket & red XL side seam tab",
       "Signature crowned circular crest embroidery on thigh with authentic detailing",
-      "Factory-standard ratio: 1 M : 2 L : 2 XL : 1 2XL (or custom buyer ratio)",
+      "Factory-standard ratio: 1 M : 2 L : 1 XL (or custom buyer ratio)",
     ],
   },
 ];
