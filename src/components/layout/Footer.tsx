@@ -113,36 +113,15 @@ export default function Footer() {
               Our Products
             </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
-              <li>
-                <Link href="/products" className="hover:text-white transition-colors">
-                  4-Way Lycra Track Pants
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="hover:text-white transition-colors">
-                  Cotton Terry Bio-Wash Joggers
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="hover:text-white transition-colors">
-                  Dry-Fit Polyester Sports Pants
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="hover:text-white transition-colors">
-                  6-Pocket Cargo Joggers
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="hover:text-white transition-colors">
-                  Brushed Winter Fleece Pants
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="hover:text-white transition-colors">
-                  Double-Piping Athletic Tracks
-                </Link>
-              </li>
+              {productCategories
+                .filter((cat) => cat !== "All Products")
+                .map((cat) => (
+                  <li key={cat}>
+                    <Link href="/products" className="hover:text-white transition-colors">
+                      {cat}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 

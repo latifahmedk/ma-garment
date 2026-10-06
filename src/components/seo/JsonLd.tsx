@@ -53,7 +53,10 @@ export default function JsonLd() {
       "Garment Manufacturing in Mumbai",
       "B2B Apparel Supplier",
       "4-Way Lycra Track Pants",
-      "Cotton French Terry Joggers",
+      "4-Way Military Track Pants",
+      "Dyson Fabric Track Pants",
+      "NS Track Pants",
+      "Code Common Track Pants",
     ],
   };
 

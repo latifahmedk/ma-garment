@@ -3,9 +3,12 @@
 import React from "react";
 import { Search, Filter } from "lucide-react";
 import { productCategories } from "@/data/products";
+import { ProductCategory } from "@/types";
+
+export type CategoryFilterValue = "All Products" | ProductCategory;
 
 interface ProductFiltersProps {
-  selectedCategory: string;
+  selectedCategory: CategoryFilterValue | string;
   onSelectCategory: (category: string) => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
@@ -50,6 +53,7 @@ export default function ProductFilters({
             <button
               key={cat}
               type="button"
+              aria-pressed={isActive}
               onClick={() => onSelectCategory(cat)}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive

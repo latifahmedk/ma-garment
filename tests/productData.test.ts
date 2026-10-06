@@ -2,7 +2,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { products } from "../src/data/products.js";
+import { products, productCategories } from "../src/data/products.js";
 
 describe("Product Data Tests - NS Product", () => {
   const nsProduct = products.find((p) => p.name === "NS" || p.slug === "ns");
@@ -216,14 +216,35 @@ describe("All Products Catalog Consistency Tests (1 to 5)", () => {
       "Code Common",
     ];
 
+    const expectedCategories = [
+      "4-Way Lycra",
+      "4-Way Military",
+      "Dyson Fabric",
+      "NS",
+      "Code Common",
+    ];
+
     products.forEach((prod, idx) => {
       assert.strictEqual(prod.name, expectedNames[idx]);
+      assert.strictEqual(prod.category, expectedCategories[idx]);
       assert.ok(prod.colors.length > 0);
       assert.ok(prod.fabric);
       assert.ok(prod.fit);
       assert.ok(prod.moq);
       assert.ok(prod.specifications);
     });
+  });
+
+  it("productCategories contains All Products and matches the 5 product categories", () => {
+    const expectedCategoriesList = [
+      "All Products",
+      "4-Way Lycra",
+      "4-Way Military",
+      "Dyson Fabric",
+      "NS",
+      "Code Common",
+    ];
+    assert.deepStrictEqual(Array.from(productCategories), expectedCategoriesList);
   });
 
   it("Existing Products 1–4 maintain their data integrity and images", () => {
@@ -250,6 +271,14 @@ describe("All Products Catalog Consistency Tests (1 to 5)", () => {
           );
         }
       }
+    }
+  });
+
+  it("Every specific category correctly filters to its manufactured product", () => {
+    const specificCategories = productCategories.filter((c) => c !== "All Products");
+    for (const cat of specificCategories) {
+      const matched = products.filter((p) => p.category === cat);
+      assert.strictEqual(matched.length >= 1, true, `Category "${cat}" must have at least one product`);
     }
   });
 });

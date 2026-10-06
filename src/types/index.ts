@@ -14,11 +14,18 @@ export interface ProductColor {
   images: ProductColorImages;
 }
 
+export type ProductCategory =
+  | "4-Way Lycra"
+  | "4-Way Military"
+  | "Dyson Fabric"
+  | "NS"
+  | "Code Common";
+
 export interface Product {
   id: string;
   name: string;
   slug: string;
-  category: "4-Way Lycra" | "Cotton Terry" | "Dry-Fit Sports" | "Winter Fleece" | "Cargo Utility" | "Classic Athletic";
+  category: ProductCategory;
   fabric: string;
   gsm: number;
   fit: string;
