@@ -2,20 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
-import {
-  Building2,
-  Users,
-  Gauge,
-  MapPin,
-  Scissors,
-  CheckCircle2,
-  ShieldCheck,
-  Truck,
-  Layers,
-  Sparkles,
-  PhoneCall,
-  MessageCircle,
-} from "lucide-react";
+import { Building2, MapPin, CheckCircle2, PhoneCall } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {

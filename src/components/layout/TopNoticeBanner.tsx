@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { Phone, MessageCircle, MapPin, Building2 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 

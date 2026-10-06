@@ -196,3 +196,15 @@ export function assertValidProduct(product: Product, options?: ValidateOptions):
     throw new Error(`Product Validation Failed:\n${result.errors.join("\n")}`);
   }
 }
+
+/**
+ * Normalizes and extracts standard manufacturing sizes (M, L, XL).
+ */
+export function getStandardSizes(sizes?: string[]): string[] {
+  if (!Array.isArray(sizes)) return ["M", "L", "XL"];
+  const standard = ["M", "L", "XL"];
+  const filtered = sizes
+    .map((s) => s.split(" ")[0].trim())
+    .filter((s) => standard.includes(s.toUpperCase()));
+  return filtered.length > 0 ? filtered : standard;
+}

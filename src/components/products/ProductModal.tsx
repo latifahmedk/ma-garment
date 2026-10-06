@@ -5,6 +5,7 @@ import Link from "next/link";
 import { X, MessageCircle, ArrowRight, Check } from "lucide-react";
 import { Product } from "@/types";
 import { siteConfig } from "@/config/site";
+import { getStandardSizes } from "@/utils/productValidation";
 import ProductImageGallery from "./ProductImageGallery";
 
 interface ProductModalProps {
@@ -18,31 +19,36 @@ export default function ProductModal({
   initialColorName,
   onClose,
 }: ProductModalProps) {
-  const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
+  const computeInitialIndex = (prod: Product | null, colorName?: string) => {
+    if (!prod || !colorName) return 0;
+    const foundIndex = prod.colors.findIndex(
+      (c) => c.name.toLowerCase() === colorName.toLowerCase()
+    );
+    return foundIndex !== -1 ? foundIndex : 0;
+  };
 
-  // Sync initial color if provided when product opens
-  useEffect(() => {
-    if (product) {
-      if (initialColorName) {
-        const foundIndex = product.colors.findIndex(
-          (c) => c.name.toLowerCase() === initialColorName.toLowerCase()
-        );
-        setSelectedColorIndex(foundIndex !== -1 ? foundIndex : 0);
-      } else {
-        setSelectedColorIndex(0);
-      }
-    }
-  }, [product, initialColorName]);
+  const [selectedColorIndex, setSelectedColorIndex] = useState<number>(() =>
+    computeInitialIndex(product, initialColorName)
+  );
+  const [prevSyncKey, setPrevSyncKey] = useState<string>(() =>
+    `${product?.id ?? ""}:${initialColorName ?? ""}`
+  );
+
+  // Synchronize color selection during render without effect cascade
+  const currentSyncKey = `${product?.id ?? ""}:${initialColorName ?? ""}`;
+  if (currentSyncKey !== prevSyncKey) {
+    setPrevSyncKey(currentSyncKey);
+    setSelectedColorIndex(computeInitialIndex(product, initialColorName));
+  }
 
   // Close on Escape key
   useEffect(() => {
+    if (!product) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
-    if (product) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    }
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
     return () => {
       document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleKeyDown);
@@ -63,7 +69,12 @@ Please send me wholesale bulk price per piece and sample terms.`
   )}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs animate-fade-in overflow-y-auto">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Product details for ${product.name}`}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs animate-fade-in overflow-y-auto"
+    >
       <div
         className="relative bg-white rounded-2xl max-w-4xl w-full my-6 sm:my-8 shadow-2xl border border-slate-200 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
@@ -177,17 +188,14 @@ Please send me wholesale bulk price per piece and sample terms.`
                 Standard Size Assortment
               </span>
               <div className="flex flex-wrap gap-1.5">
-                {product.sizes
-                  .map((s) => s.split(" ")[0].trim())
-                  .filter((s) => ["M", "L", "XL"].includes(s.toUpperCase()))
-                  .map((s, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 text-xs font-semibold bg-white border border-slate-300 rounded text-slate-800 shadow-2xs"
-                    >
-                      {s}
-                    </span>
-                  ))}
+                {getStandardSizes(product.sizes).map((s, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-xs font-semibold bg-white border border-slate-300 rounded text-slate-800 shadow-2xs"
+                  >
+                    {s}
+                  </span>
+                ))}
               </div>
               <p className="text-[11px] text-slate-400">
                 *Custom ratio (M:L:XL) available for orders exceeding 300 pieces.

@@ -31,6 +31,7 @@ export default function ProductFilters({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search by fabric, style, or GSM..."
+            aria-label="Search manufactured track pants by fabric, style, or GSM"
             className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent placeholder:text-slate-400"
           />
         </div>

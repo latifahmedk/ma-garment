@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Maximize2, X, Check } from "lucide-react";
 import { Product } from "@/types";
@@ -30,10 +30,12 @@ export default function ProductImageGallery({
   // Fullscreen / larger view lightbox
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
 
-  // When selected color changes, reset active image to 0 (Full Pant)
-  useEffect(() => {
+  // When selected color changes, reset active image to 0 (Full Pant) during render
+  const [prevColorIndex, setPrevColorIndex] = useState(selectedColorIndex);
+  if (selectedColorIndex !== prevColorIndex) {
+    setPrevColorIndex(selectedColorIndex);
     setActiveImageIndex(0);
-  }, [selectedColorIndex]);
+  }
 
   // Eagerly preload all color images for this product into browser cache
   useEffect(() => {
@@ -61,15 +63,15 @@ export default function ProductImageGallery({
   const currentImage = colorImagesList[activeImageIndex] || colorImagesList[0];
 
   // Navigation handlers
-  const handlePrev = (e?: React.MouseEvent) => {
+  const handlePrev = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     setActiveImageIndex((prev) => (prev === 0 ? colorImagesList.length - 1 : prev - 1));
-  };
+  }, [colorImagesList.length]);
 
-  const handleNext = (e?: React.MouseEvent) => {
+  const handleNext = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     setActiveImageIndex((prev) => (prev === colorImagesList.length - 1 ? 0 : prev + 1));
-  };
+  }, [colorImagesList.length]);
 
   // Keyboard navigation for lightbox
   useEffect(() => {
@@ -81,7 +83,7 @@ export default function ProductImageGallery({
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isLightboxOpen, colorImagesList.length]);
+  }, [isLightboxOpen, handlePrev, handleNext]);
 
   return (
     <div className={`flex flex-col gap-3 ${className}`}>
@@ -246,6 +248,9 @@ export default function ProductImageGallery({
       {/* Lightbox / Larger View Modal */}
       {isLightboxOpen && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded product image viewer"
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4 animate-fade-in"
           onClick={() => setIsLightboxOpen(false)}
         >
@@ -321,6 +326,8 @@ export default function ProductImageGallery({
                     key={idx}
                     type="button"
                     onClick={() => setActiveImageIndex(idx)}
+                    aria-label={`View ${thumb.label}`}
+                    aria-pressed={isActive}
                     className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
                       isActive
                         ? "border-blue-500 scale-105 shadow-md shadow-blue-500/30"

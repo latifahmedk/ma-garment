@@ -7,7 +7,7 @@ import { Product } from "@/types";
 import ProductCard from "@/components/products/ProductCard";
 import ProductModal from "@/components/products/ProductModal";
 import ProductFilters from "@/components/products/ProductFilters";
-import { ShieldCheck, Package, MessageCircle, FileText, CheckCircle2, Phone } from "lucide-react";
+import { Package, MessageCircle, CheckCircle2, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export default function ProductsClient() {

@@ -1,6 +1,5 @@
 import React from "react";
-import { Users, Gauge, Handshake, PackageCheck, MapPin } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import { Users, Gauge, Handshake, PackageCheck } from "lucide-react";
 
 export default function ProductionStats() {
   const stats = [

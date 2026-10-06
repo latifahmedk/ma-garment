@@ -4,11 +4,8 @@ import {
   MapPin,
   Phone,
   Mail,
-  Clock,
   MessageCircle,
   Building2,
-  Truck,
-  ShieldCheck,
   CheckCircle2,
 } from "lucide-react";
 import EnquiryForm from "@/components/contact/EnquiryForm";

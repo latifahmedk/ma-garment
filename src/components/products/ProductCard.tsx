@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Product } from "@/types";
 import { MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { getStandardSizes } from "@/utils/productValidation";
 
 interface ProductCardProps {
   product: Product;
@@ -138,10 +139,7 @@ export default function ProductCard({ product, onOpenDetails }: ProductCardProps
             <div className="flex items-center justify-between text-xs text-slate-600">
               <span className="font-medium text-slate-500">Sizes:</span>
               <span className="font-semibold text-slate-800">
-                {product.sizes
-                  .map((s) => s.split(" ")[0].trim())
-                  .filter((s) => ["M", "L", "XL"].includes(s.toUpperCase()))
-                  .join(", ")}
+                {getStandardSizes(product.sizes).join(", ")}
               </span>
             </div>
 

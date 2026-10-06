@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Package } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { products } from "@/data/products";
 import { Product } from "@/types";
 import ProductCard from "@/components/products/ProductCard";

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Send, CheckCircle2, MessageCircle, AlertCircle, Building2, Phone, Mail } from "lucide-react";
+import { Send, CheckCircle2, MessageCircle, AlertCircle } from "lucide-react";
 import { products } from "@/data/products";
 import { siteConfig } from "@/config/site";
 import { WholesaleEnquiry } from "@/types";
@@ -24,12 +24,14 @@ export default function EnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  // Update product interest if query parameter changes
-  useEffect(() => {
+  // Synchronize product interest during render if query parameter changes
+  const [prevPrefilled, setPrevPrefilled] = useState(prefilledProduct);
+  if (prefilledProduct !== prevPrefilled) {
+    setPrevPrefilled(prefilledProduct);
     if (prefilledProduct) {
       setFormData((prev) => ({ ...prev, productInterest: prefilledProduct }));
     }
-  }, [prefilledProduct]);
+  }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
