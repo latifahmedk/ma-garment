@@ -80,7 +80,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-            MA Garments was founded to provide wholesale garment traders, distributors, and retail shop owners with direct factory-rate track pants without the inconsistency and markups of intermediaries.
+            MA Garments was founded to provide wholesale garment traders, distributors, and retail clothes shop owners with direct factory-rate track pants without the inconsistency and markups of intermediaries (Minimum order: 100 pieces).
           </p>
         </div>
 
@@ -157,10 +157,10 @@ export default function AboutPage() {
             <div className="pt-2">
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
                 <span className="font-bold text-slate-900 text-sm block">
-                  Our B2B Wholesale Commitment
+                  Our Wholesale &amp; Shop Supply Commitment
                 </span>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  We sell exclusively to wholesalers, bulk traders, and retail chain buyers. We do not operate any consumer-facing retail shop or e-commerce store, ensuring zero competition with our wholesale clients.
+                  We supply directly to wholesalers, bulk traders, and retail clothes shop owners across India (Min. Order: 100 pieces). We do not operate any consumer retail shop or e-commerce store, ensuring zero retail competition for the shopkeepers and wholesalers who buy from us.
                 </p>
               </div>
             </div>

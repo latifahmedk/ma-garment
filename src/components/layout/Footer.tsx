@@ -48,7 +48,7 @@ export default function Footer() {
               <Truck className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-semibold text-white mb-0.5">Prompt Wholesale Transport</h4>
+              <h4 className="font-semibold text-white mb-0.5">Transport</h4>
               <p className="text-slate-400 text-xs">
                 Daily parcel dispatch to Dadar, Crawford Market, Bhiwandi, and Pan-India logistics.
               </p>
@@ -75,7 +75,7 @@ export default function Footer() {
 
             <div className="pt-2">
               <span className="inline-block bg-slate-900 border border-slate-800 text-amber-300 text-xs px-3 py-1.5 rounded-md font-medium">
-                ⚠️ Strictly B2B Wholesale Only • No Individual / Retail Sales
+                📦 Wholesale &amp; Clothes Shop Orders • Minimum Order: 100 Pieces (No Single Pieces)
               </span>
             </div>
           </div>
@@ -192,7 +192,7 @@ export default function Footer() {
             <span>Wholesale Garment Manufacturer in Sion, Mumbai, India</span>
             <span>•</span>
             <Link href="/contact" className="hover:text-slate-300">
-              B2B Enquiries
+              Wholesale &amp; Shop Enquiries
             </Link>
             <span>•</span>
             <Link href="/about" className="hover:text-slate-300">

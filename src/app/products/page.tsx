@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Manufactured Track Pants Catalogue | ${siteConfig.name}`,
     description:
-      "Direct factory manufactured track pants catalogue for wholesale buyers, traders, and retail chains across India. Minimum order: 100 pieces.",
+      "Direct factory manufactured track pants catalogue for wholesale buyers, traders, and retail clothes shops across India. Minimum order: 100 pieces.",
     images: [{ url: siteConfig.ogImage }],
   },
 };

@@ -55,7 +55,7 @@ export default function QuickInquiryCTA() {
           </div>
 
           <div className="pt-4 text-xs text-slate-400 flex items-center justify-center gap-4 flex-wrap">
-            <span>✓ Minimum Order: 100 Pcs</span>
+            <span>✓ Min. Order: 100 Pcs (Wholesalers &amp; Clothes Shop Owners)</span>
             <span>•</span>
             <span>✓ Sample pieces provided on request</span>
             <span>•</span>

@@ -7,17 +7,17 @@ export default function TopNoticeBanner() {
   return (
     <div className="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-        {/* Left: B2B Notice */}
+        {/* Left: Wholesale & Shop Orders Notice */}
         <div className="flex items-center gap-2 text-center sm:text-left">
           <span className="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-300 font-semibold px-2 py-0.5 rounded text-[11px] border border-amber-500/30">
             <Building2 className="w-3 h-3" />
-            B2B WHOLESALE ONLY
+            WHOLESALE &amp; CLOTHES SHOPS
           </span>
           <span className="text-slate-300 hidden md:inline">
-            Direct Factory Dispatch • Min MOQ: 100 Pcs • Sion, Mumbai
+            Direct Factory Dispatch • Min. Order: 100 Pcs • Sion, Mumbai
           </span>
           <span className="text-slate-300 md:hidden">
-            Min MOQ: 100 Pcs • Sion, Mumbai
+            Min. Order: 100 Pcs • Sion, Mumbai
           </span>
         </div>
 
@@ -39,7 +39,7 @@ export default function TopNoticeBanner() {
 
           <a
             href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(
-              "Hello MA Garments, I am a wholesale buyer interested in your track pants collection."
+              "Hello MA Garments, I am interested in track pants for wholesale / clothes shop order (Min. 100 pcs)."
             )}`}
             target="_blank"
             rel="noopener noreferrer"

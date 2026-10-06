@@ -119,13 +119,13 @@ export default function ProductsClient() {
         <div className="bg-slate-900 text-white rounded-2xl p-8 sm:p-10 border border-slate-800 space-y-6">
           <div className="max-w-3xl space-y-3">
             <span className="text-xs font-bold text-blue-400 uppercase tracking-widest block">
-              Wholesale Buyer Guidelines
+              Wholesale &amp; Clothes Shop Buyer Guidelines
             </span>
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
-              How To Order Wholesale & Place Your Order
+              How To Order For Wholesalers &amp; Clothes Shop Owners
             </h2>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              We operate exclusively on a B2B basis with verified wholesale traders, shop owners, and garment distributors. We do not sell loose single pieces to retail consumers.
+              We supply directly to wholesale traders, clothes shop owners, retail store buyers, and garment distributors across India. Whether you run a large wholesale business or a local clothes shop, you get direct factory pricing with a minimum order quantity of 100 pieces (we do not sell single / loose pieces for individual personal use).
             </p>
           </div>
 

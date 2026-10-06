@@ -14,16 +14,16 @@ export default function HeroSection() {
             {/* Trust badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-800 text-xs sm:text-sm font-semibold shadow-2xs">
               <Building2 className="w-4 h-4 text-blue-700" />
-              <span>Sion, Mumbai Manufacturing Unit • Strictly B2B</span>
+              <span>Sion, Mumbai Manufacturing Unit • Wholesale &amp; Clothes Shop Orders (Min. 100 Pcs)</span>
             </div>
 
             {/* Main Headline */}
             <div className="space-y-3">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
-                Track Pants Manufacturer & Wholesale Supplier in Mumbai
+                Track Pants Manufacturer &amp; Wholesale Supplier in Mumbai
               </h1>
               <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-2xl">
-                We manufacture high-grade athletic, cotton terry, and 4-way Lycra track pants directly from our factory in Sion, Mumbai. We partner with wholesalers, garment distributors, and retail chain buyers with authentic factory-rate bulk pricing.
+                We manufacture high-grade athletic, cotton terry, and 4-way Lycra track pants directly from our factory in Sion, Mumbai. We supply wholesalers, distributors, and retail clothes shop owners with authentic factory rates (Minimum order: 100 pieces).
               </p>
             </div>
 
@@ -38,7 +38,7 @@ export default function HeroSection() {
                 <div className="text-lg font-bold text-slate-900">15–20 Staff</div>
               </div>
               <div className="p-3 bg-white rounded-lg border border-slate-200 shadow-2xs col-span-2 sm:col-span-1">
-                <div className="text-xs text-slate-500 font-medium">Minimum Order (MOQ)</div>
+                <div className="text-xs text-slate-500 font-medium">Min. Order (Wholesale &amp; Shops)</div>
                 <div className="text-lg font-bold text-slate-900">100 Pieces</div>
               </div>
             </div>

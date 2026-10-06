@@ -3,7 +3,7 @@ export const siteConfig = {
   legalName: "MA Garments Manufacturing Co.",
   tagline: "Track Pants Manufacturer & Wholesale Supplier in Mumbai",
   description:
-    "Direct track pants manufacturing factory located in Sion, Mumbai. Supplying premium 4-way Lycra, cotton terry, dry-fit sports, and cargo joggers to wholesalers and retailers across India at authentic factory rates.",
+    "Direct track pants manufacturing factory located in Sion, Mumbai. Supplying premium 4-way Lycra, cotton terry, dry-fit sports, and cargo joggers to wholesalers and retail clothes shop owners across India at authentic factory rates (Minimum order: 100 pieces).",
   url: "https://magarments.com", // Canonical / production URL placeholder
   ogImage: "/images/og-image.jpg",
 
@@ -13,7 +13,7 @@ export const siteConfig = {
     monthlyCapacity: "6,000 – 8,000 Pieces",
     workforce: "15 – 20 Skilled Tailors & Craftsmen",
     wholesalersServed: "10 – 15 Active Wholesale Partners",
-    minimumOrderQuantity: "100 Pieces (Standard Wholesale Carton)",
+    minimumOrderQuantity: "100 Pieces (Wholesalers & Clothes Shop Owners Welcome)",
     facilityType: "In-House Cutting, Stitching, Quality Check & Packaging Unit",
     establishedYear: "2018",
   },
@@ -24,7 +24,7 @@ export const siteConfig = {
     phoneCall: "+919930685140",
     whatsappNumber: "+919930685140",
     whatsappDisplay: "+91 9930685140",
-    email: "latif.bst18@gmail.com.com",
+    email: "latif.bst18@gmail.com",
     address: {
       street: "Gala No. 4 & 5, Sion Industrial Compound, LBS Marg",
       landmark: "Near Sion Railway Station (West)",
@@ -35,7 +35,7 @@ export const siteConfig = {
       country: "India",
       countryCode: "IN",
     },
-    visitingHours: "Monday to Saturday: 9:30 AM – 7:30 PM (Wholesale buyers by appointment)",
+    visitingHours: "Monday to Saturday: 9:30 AM – 7:30 PM (Wholesalers & shop owners by appointment)",
     dispatchHubs: "Direct daily dispatch to Dadar, Crawford Market, Bhiwandi, Ulhasnagar, and Pan-India transport carriers",
   },
 

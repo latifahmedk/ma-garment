@@ -8,14 +8,14 @@ export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const defaultMessage =
-    "Hello MA Garments! I am a wholesale buyer interested in your track pants manufacturing catalog. Please share wholesale pricing and MOQ.";
+    "Hello MA Garments! I am interested in your track pants catalog for wholesale / clothes shop order (Min. 100 pcs). Please share pricing and details.";
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
       {/* Tooltip callout */}
       {showTooltip && (
         <div className="hidden sm:flex items-center gap-2 bg-white text-slate-800 text-xs font-medium py-2 px-3 rounded-lg shadow-xl border border-slate-200 animate-fade-in">
-          <span>Chat with Factory Manager (B2B)</span>
+          <span>Chat with Factory Manager (Min. 100 Pcs)</span>
           <button
             type="button"
             onClick={() => setShowTooltip(false)}

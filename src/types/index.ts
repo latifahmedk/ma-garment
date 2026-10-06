@@ -53,9 +53,9 @@ export interface WholesaleEnquiry {
   companyName: string;
   phone: string;
   email: string;
-  customerType: "Wholesale Trader" | "Retail Shop / MBO" | "Bulk Distributor" | "Corporate / Sports Team" | "Online Seller / Reseller";
+  customerType?: string;
   productInterest: string;
-  quantity: "100 - 250 Pcs (Trial Order)" | "250 - 500 Pcs" | "500 - 1,000 Pcs" | "1,000+ Pcs (Full Carton / Monthly)";
+  quantity?: string;
   cityState: string;
   message: string;
 }

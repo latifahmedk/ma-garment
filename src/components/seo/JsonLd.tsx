@@ -52,6 +52,7 @@ export default function JsonLd() {
       "Wholesale Joggers Supplier",
       "Garment Manufacturing in Mumbai",
       "B2B Apparel Supplier",
+      "Clothes Shop Bulk Supplier",
       "4-Way Lycra Track Pants",
       "4-Way Military Track Pants",
       "Dyson Fabric Track Pants",

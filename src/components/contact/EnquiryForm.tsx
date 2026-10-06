@@ -16,9 +16,7 @@ export default function EnquiryForm() {
     companyName: "",
     phone: "",
     email: "",
-    customerType: "Wholesale Trader",
     productInterest: prefilledProduct || "All Track Pants Styles / General Inquiry",
-    quantity: "100 - 250 Pcs (Trial Order)",
     cityState: "",
     message: "",
   });
@@ -62,19 +60,17 @@ export default function EnquiryForm() {
   };
 
   // Build WhatsApp text from the form data
-  const formattedWhatsAppText = `*NEW B2B WHOLESALE ENQUIRY (MA Garments Sion)*
+  const formattedWhatsAppText = `*NEW WHOLESALE / SHOP ORDER ENQUIRY (MA Garments Sion)*
 ------------------------------------
 *Buyer Name:* ${formData.fullName}
 *Business/Shop:* ${formData.companyName}
-*Buyer Type:* ${formData.customerType}
 *Phone:* ${formData.phone}
 *Email:* ${formData.email || "N/A"}
 *Location:* ${formData.cityState || "Mumbai / Maharashtra"}
 *Product Required:* ${formData.productInterest}
-*Expected Qty:* ${formData.quantity}
 *Notes:* ${formData.message || "Please send wholesale price list and sample terms."}
 ------------------------------------
-Sent via MA Garments B2B Portal`;
+Sent via MA Garments Factory Portal`;
 
   const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(
     formattedWhatsAppText
@@ -93,7 +89,7 @@ Sent via MA Garments B2B Portal`;
           </h3>
           <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
             Thank you, <span className="font-semibold text-slate-900">{formData.fullName}</span> from{" "}
-            <span className="font-semibold text-slate-900">{formData.companyName}</span>. Our Sion factory production manager will review your quantity requirements and contact you within 2–4 business hours.
+            <span className="font-semibold text-slate-900">{formData.companyName}</span>. Our Sion factory production manager will review your requirements and contact you within 2–4 business hours.
           </p>
         </div>
 
@@ -127,9 +123,7 @@ Sent via MA Garments B2B Portal`;
                 companyName: "",
                 phone: "",
                 email: "",
-                customerType: "Wholesale Trader",
                 productInterest: "All Track Pants Styles / General Inquiry",
-                quantity: "100 - 250 Pcs (Trial Order)",
                 cityState: "",
                 message: "",
               });
@@ -232,43 +226,7 @@ Sent via MA Garments B2B Portal`;
         </div>
       </div>
 
-      {/* Row 3: Customer Type & City/State */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-            Customer / Buyer Type <span className="text-red-500">*</span>
-          </label>
-          <select
-            name="customerType"
-            value={formData.customerType}
-            onChange={handleChange}
-            className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
-          >
-            <option value="Wholesale Trader">Wholesale Trader / Stockist</option>
-            <option value="Retail Shop / MBO">Retail Shop / Multi-Brand Outlet</option>
-            <option value="Bulk Distributor">Regional Garment Distributor</option>
-            <option value="Corporate / Sports Team">Corporate / Sports Team / Uniforms</option>
-            <option value="Online Seller / Reseller">Online Seller / E-commerce Brand</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-            City / State <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="cityState"
-            required
-            value={formData.cityState}
-            onChange={handleChange}
-            placeholder="e.g. Mumbai / Pune / Surat / Delhi"
-            className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-slate-400"
-          />
-        </div>
-      </div>
-
-      {/* Row 4: Product Interested In & Quantity */}
+      {/* Row 3: Product Interested In & City/State */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-xs font-semibold text-slate-700 mb-1.5">
@@ -293,19 +251,17 @@ Sent via MA Garments B2B Portal`;
 
         <div>
           <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-            Approximate Order Quantity <span className="text-red-500">*</span>
+            City / State <span className="text-red-500">*</span>
           </label>
-          <select
-            name="quantity"
-            value={formData.quantity}
+          <input
+            type="text"
+            name="cityState"
+            required
+            value={formData.cityState}
             onChange={handleChange}
-            className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
-          >
-            <option value="100 - 250 Pcs (Trial Order)">100 – 250 Pieces (Wholesale Trial Order)</option>
-            <option value="250 - 500 Pcs">250 – 500 Pieces (Regular Carton Order)</option>
-            <option value="500 - 1,000 Pcs">500 – 1,000 Pieces (Distributor Lot)</option>
-            <option value="1,000+ Pcs (Full Carton / Monthly)">1,000+ Pieces (Monthly Scheduled Dispatch)</option>
-          </select>
+            placeholder="e.g. Mumbai / Pune / Surat / Delhi"
+            className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-slate-400"
+          />
         </div>
       </div>
 
@@ -334,7 +290,7 @@ Sent via MA Garments B2B Portal`;
           <span>Submit Wholesale Enquiry</span>
         </button>
         <p className="text-[11px] text-slate-400 text-center mt-2.5">
-          🔒 Strictly B2B: Your commercial information is confidential and will only be used to generate your factory quote.
+          🔒 Wholesale &amp; Shop Orders: Your business information is confidential and will only be used to generate your factory quote (Min. 100 Pcs).
         </p>
       </div>
     </form>
