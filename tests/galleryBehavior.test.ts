@@ -191,24 +191,24 @@ describe("Gallery Behavior Tests - NS Product", () => {
   });
 });
 
-describe("Gallery Behavior Tests - Coat Common Product", () => {
-  const coatCommonProduct = products.find((p) => p.name === "Coat Common")!;
+describe("Gallery Behavior Tests - Code Common Product", () => {
+  const codeCommonProduct = products.find((p) => p.name === "Code Common")!;
 
-  it("Coat Common loads correctly with initial color (Olive Green)", () => {
-    const gallery = new GalleryModel(coatCommonProduct, 0);
+  it("Code Common loads correctly with initial color (Olive Green)", () => {
+    const gallery = new GalleryModel(codeCommonProduct, 0);
     assert.strictEqual(gallery.currentColor.name, "Olive Green");
     assert.strictEqual(gallery.colorImagesList.length, 4);
   });
 
   it("First selected image is Full", () => {
-    const gallery = new GalleryModel(coatCommonProduct, 0);
+    const gallery = new GalleryModel(codeCommonProduct, 0);
     assert.strictEqual(gallery.activeImageIndex, 0);
     assert.strictEqual(gallery.currentActiveImage.key, "full");
-    assert.ok(gallery.currentActiveImage.src.includes("coat-common-olive-green-full.png"));
+    assert.ok(gallery.currentActiveImage.src.includes("code-common-olive-green-full.png"));
   });
 
   it("Selecting a color changes the gallery images to that color's images", () => {
-    const gallery = new GalleryModel(coatCommonProduct, 0);
+    const gallery = new GalleryModel(codeCommonProduct, 0);
 
     // Initial is Olive Green
     assert.ok(gallery.currentActiveImage.src.includes("olive-green"));
@@ -218,14 +218,14 @@ describe("Gallery Behavior Tests - Coat Common Product", () => {
     assert.strictEqual(gallery.currentColor.name, "Black");
 
     const images = gallery.colorImagesList.map((img) => img.src);
-    assert.ok(images[0].includes("coat-common-black-full.png"));
-    assert.ok(images[1].includes("coat-common-black-waist.png"));
-    assert.ok(images[2].includes("coat-common-black-pocket.png"));
-    assert.ok(images[3].includes("coat-common-black-bottom.png"));
+    assert.ok(images[0].includes("code-common-black-full.png"));
+    assert.ok(images[1].includes("code-common-black-waist.png"));
+    assert.ok(images[2].includes("code-common-black-pocket.png"));
+    assert.ok(images[3].includes("code-common-black-bottom.png"));
   });
 
   it("Changing color resets the active image to Full", () => {
-    const gallery = new GalleryModel(coatCommonProduct, 0);
+    const gallery = new GalleryModel(codeCommonProduct, 0);
 
     // Navigate to bottom view (index 3)
     gallery.selectImage(3);
@@ -239,13 +239,13 @@ describe("Gallery Behavior Tests - Coat Common Product", () => {
     // Must be reset to index 0 (Full)
     assert.strictEqual(gallery.activeImageIndex, 0, "Color change must reset active image to Full");
     assert.strictEqual(gallery.currentActiveImage.key, "full");
-    assert.ok(gallery.currentActiveImage.src.includes("coat-common-royal-blue-full.png"));
+    assert.ok(gallery.currentActiveImage.src.includes("code-common-royal-blue-full.png"));
   });
 
   it("Correct 4 images are displayed for the selected color", () => {
-    const gallery = new GalleryModel(coatCommonProduct);
+    const gallery = new GalleryModel(codeCommonProduct);
 
-    coatCommonProduct.colors.forEach((color, colorIdx) => {
+    codeCommonProduct.colors.forEach((color, colorIdx) => {
       gallery.selectColor(colorIdx);
       const list = gallery.colorImagesList;
 
@@ -263,14 +263,14 @@ describe("Gallery Behavior Tests - Coat Common Product", () => {
   });
 
   it("Images from another color are not displayed", () => {
-    const gallery = new GalleryModel(coatCommonProduct);
+    const gallery = new GalleryModel(codeCommonProduct);
 
-    coatCommonProduct.colors.forEach((color, colorIdx) => {
+    codeCommonProduct.colors.forEach((color, colorIdx) => {
       gallery.selectColor(colorIdx);
       const currentListSrcs = new Set(gallery.colorImagesList.map((i) => i.src));
 
       // Compare with all other colors
-      coatCommonProduct.colors.forEach((otherColor, otherIdx) => {
+      codeCommonProduct.colors.forEach((otherColor, otherIdx) => {
         if (colorIdx === otherIdx) return;
 
         const otherSrcs = [
@@ -292,7 +292,7 @@ describe("Gallery Behavior Tests - Coat Common Product", () => {
   });
 
   it("Next and Previous thumbnail navigation work correctly", () => {
-    const gallery = new GalleryModel(coatCommonProduct, 0);
+    const gallery = new GalleryModel(codeCommonProduct, 0);
 
     // Initial = 0 (full)
     assert.strictEqual(gallery.activeImageIndex, 0);

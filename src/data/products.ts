@@ -383,13 +383,13 @@ export const products: Product[] = [
   },
   {
     id: "prod-005",
-    name: "Coat Common",
-    slug: "coat-common",
+    name: "Code Common",
+    slug: "code-common",
     category: "4-Way Lycra",
     fabric: "220 GSM Imported Textured Ribbed Poly-Lycra",
     gsm: 220,
     fit: "Modern Slim-Tapered Athletic Fit",
-    image: "/images/products/coat-common/olive-green/coat-common-olive-green-full.png",
+    image: "/images/products/code-common/olive-green/code-common-olive-green-full.png",
     featured: true,
     colors: [
       {
@@ -397,10 +397,10 @@ export const products: Product[] = [
         hex: "#4D5340",
         inStock: true,
         images: {
-          full: "/images/products/coat-common/olive-green/coat-common-olive-green-full.png",
-          waist: "/images/products/coat-common/olive-green/coat-common-olive-green-waist.png",
-          pocket: "/images/products/coat-common/olive-green/coat-common-olive-green-pocket.png",
-          bottom: "/images/products/coat-common/olive-green/coat-common-olive-green-bottom.png",
+          full: "/images/products/code-common/olive-green/code-common-olive-green-full.png",
+          waist: "/images/products/code-common/olive-green/code-common-olive-green-waist.png",
+          pocket: "/images/products/code-common/olive-green/code-common-olive-green-pocket.png",
+          bottom: "/images/products/code-common/olive-green/code-common-olive-green-bottom.png",
         },
       },
       {
@@ -408,10 +408,10 @@ export const products: Product[] = [
         hex: "#18181A",
         inStock: true,
         images: {
-          full: "/images/products/coat-common/black/coat-common-black-full.png",
-          waist: "/images/products/coat-common/black/coat-common-black-waist.png",
-          pocket: "/images/products/coat-common/black/coat-common-black-pocket.png",
-          bottom: "/images/products/coat-common/black/coat-common-black-bottom.png",
+          full: "/images/products/code-common/black/code-common-black-full.png",
+          waist: "/images/products/code-common/black/code-common-black-waist.png",
+          pocket: "/images/products/code-common/black/code-common-black-pocket.png",
+          bottom: "/images/products/code-common/black/code-common-black-bottom.png",
         },
       },
       {
@@ -419,10 +419,10 @@ export const products: Product[] = [
         hex: "#227B8E",
         inStock: true,
         images: {
-          full: "/images/products/coat-common/teal-blue/coat-common-teal-blue-full.png",
-          waist: "/images/products/coat-common/teal-blue/coat-common-teal-blue-waist.png",
-          pocket: "/images/products/coat-common/teal-blue/coat-common-teal-blue-pocket.png",
-          bottom: "/images/products/coat-common/teal-blue/coat-common-teal-blue-bottom.png",
+          full: "/images/products/code-common/teal-blue/code-common-teal-blue-full.png",
+          waist: "/images/products/code-common/teal-blue/code-common-teal-blue-waist.png",
+          pocket: "/images/products/code-common/teal-blue/code-common-teal-blue-pocket.png",
+          bottom: "/images/products/code-common/teal-blue/code-common-teal-blue-bottom.png",
         },
       },
       {
@@ -430,10 +430,10 @@ export const products: Product[] = [
         hex: "#1E3A6E",
         inStock: true,
         images: {
-          full: "/images/products/coat-common/royal-blue/coat-common-royal-blue-full.png",
-          waist: "/images/products/coat-common/royal-blue/coat-common-royal-blue-waist.png",
-          pocket: "/images/products/coat-common/royal-blue/coat-common-royal-blue-pocket.png",
-          bottom: "/images/products/coat-common/royal-blue/coat-common-royal-blue-bottom.png",
+          full: "/images/products/code-common/royal-blue/code-common-royal-blue-full.png",
+          waist: "/images/products/code-common/royal-blue/code-common-royal-blue-waist.png",
+          pocket: "/images/products/code-common/royal-blue/code-common-royal-blue-pocket.png",
+          bottom: "/images/products/code-common/royal-blue/code-common-royal-blue-bottom.png",
         },
       },
       {
@@ -441,10 +441,10 @@ export const products: Product[] = [
         hex: "#3A3D42",
         inStock: true,
         images: {
-          full: "/images/products/coat-common/charcoal-grey/coat-common-charcoal-grey-full.png",
-          waist: "/images/products/coat-common/charcoal-grey/coat-common-charcoal-grey-waist.png",
-          pocket: "/images/products/coat-common/charcoal-grey/coat-common-charcoal-grey-pocket.png",
-          bottom: "/images/products/coat-common/charcoal-grey/coat-common-charcoal-grey-bottom.png",
+          full: "/images/products/code-common/charcoal-grey/code-common-charcoal-grey-full.png",
+          waist: "/images/products/code-common/charcoal-grey/code-common-charcoal-grey-waist.png",
+          pocket: "/images/products/code-common/charcoal-grey/code-common-charcoal-grey-pocket.png",
+          bottom: "/images/products/code-common/charcoal-grey/code-common-charcoal-grey-bottom.png",
         },
       },
       {
@@ -452,10 +452,10 @@ export const products: Product[] = [
         hex: "#1A2234",
         inStock: true,
         images: {
-          full: "/images/products/coat-common/navy-blue/coat-common-navy-blue-full.png",
-          waist: "/images/products/coat-common/navy-blue/coat-common-navy-blue-waist.png",
-          pocket: "/images/products/coat-common/navy-blue/coat-common-navy-blue-pocket.png",
-          bottom: "/images/products/coat-common/navy-blue/coat-common-navy-blue-bottom.png",
+          full: "/images/products/code-common/navy-blue/code-common-navy-blue-full.png",
+          waist: "/images/products/code-common/navy-blue/code-common-navy-blue-waist.png",
+          pocket: "/images/products/code-common/navy-blue/code-common-navy-blue-pocket.png",
+          bottom: "/images/products/code-common/navy-blue/code-common-navy-blue-bottom.png",
         },
       },
     ],

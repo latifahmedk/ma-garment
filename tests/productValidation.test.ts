@@ -137,25 +137,25 @@ describe("Validation Tests - Product & Image Validation Rules", () => {
     assert.ok(result.errors.some((e) => e.includes("must have at least one color")));
   });
 
-  it("Valid Coat Common data passes validation", () => {
-    const coatCommonProduct = products.find((p) => p.name === "Coat Common")!;
-    assert.ok(coatCommonProduct, "Coat Common must exist");
-    const result = validateProduct(coatCommonProduct);
+  it("Valid Code Common data passes validation", () => {
+    const codeCommonProduct = products.find((p) => p.name === "Code Common")!;
+    assert.ok(codeCommonProduct, "Code Common must exist");
+    const result = validateProduct(codeCommonProduct);
     assert.strictEqual(
       result.valid,
       true,
-      `Coat Common should pass validation: ${result.errors.join(", ")}`
+      `Code Common should pass validation: ${result.errors.join(", ")}`
     );
     assert.strictEqual(result.errors.length, 0);
-    assert.doesNotThrow(() => assertValidProduct(coatCommonProduct));
+    assert.doesNotThrow(() => assertValidProduct(codeCommonProduct));
   });
 
-  it("Coat Common missing Pocket image fails validation", () => {
-    const coatCommonProduct = products.find((p) => p.name === "Coat Common")!;
-    const invalidCoat: Product = JSON.parse(JSON.stringify(coatCommonProduct));
-    delete (invalidCoat.colors[0].images as Record<string, unknown>).pocket;
+  it("Code Common missing Pocket image fails validation", () => {
+    const codeCommonProduct = products.find((p) => p.name === "Code Common")!;
+    const invalidCode: Product = JSON.parse(JSON.stringify(codeCommonProduct));
+    delete (invalidCode.colors[0].images as Record<string, unknown>).pocket;
 
-    const result = validateProduct(invalidCoat);
+    const result = validateProduct(invalidCode);
     assert.strictEqual(result.valid, false);
     assert.ok(
       result.errors.some((e) => e.includes("Missing Pocket")),
