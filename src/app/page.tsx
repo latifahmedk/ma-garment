@@ -15,11 +15,11 @@ export default function HomePage() {
       {/* 2. Transparent Manufacturing Capacity & Operational Stats */}
       <ProductionStats />
 
-      {/* 3. What We Manufacture (Fabric categories & technical specs) */}
-      <CategoryGrid />
-
-      {/* 4. Featured Manufactured Track Pants Catalog */}
+      {/* 3. Featured Manufactured Track Pants Catalog */}
       <FeaturedProducts />
+
+      {/* 4. What We Manufacture (Fabric categories & technical specs) */}
+      <CategoryGrid />
 
       {/* 5. Why Wholesalers Work With Us (In-house cutting, QC, Sion Mumbai advantage) */}
       <WhyWorkWithUs />
