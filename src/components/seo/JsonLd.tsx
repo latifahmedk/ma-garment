@@ -21,6 +21,7 @@ export default function JsonLd() {
     email: siteConfig.contact.email,
     priceRange: "₹₹",
     image: `${siteConfig.url}${siteConfig.ogImage}`,
+    logo: `${siteConfig.url}/images/logo.png`,
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.contact.address.street,

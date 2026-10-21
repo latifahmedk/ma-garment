@@ -5,7 +5,8 @@ export const siteConfig = {
   description:
     "Direct track pants manufacturing factory located in Sion, Mumbai. Supplying premium 4-way Lycra, cotton terry, dry-fit sports, and cargo joggers to wholesalers and retail clothes shop owners across India at authentic factory rates (Minimum order: 100 pieces).",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://magarments.in", // Canonical / production .in URL
-  ogImage: "/images/og-image.jpg",
+  logo: "/images/logo.png",
+  ogImage: "/images/logo.png",
 
   // Factory Specifications (Realistic & honest metrics)
   factory: {

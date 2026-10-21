@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   MapPin,
@@ -61,8 +62,14 @@ export default function Footer() {
           {/* Col 1 & 2: Factory Identity */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-700 flex items-center justify-center text-white font-bold text-lg">
-                MA
+              <div className="relative w-11 h-11 rounded-xl bg-white p-1 flex items-center justify-center overflow-hidden shrink-0 shadow-xs">
+                <Image
+                  src="/images/logo.png"
+                  alt="MA Garments Logo"
+                  width={44}
+                  height={44}
+                  className="object-contain w-full h-full"
+                />
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
                 MA GARMENTS

@@ -95,11 +95,19 @@ export const metadata: Metadata = {
     images: [
       {
         url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.name} Garment Factory Sion Mumbai`,
+        width: 1024,
+        height: 1024,
+        alt: `${siteConfig.name} Official Brand Logo`,
       },
     ],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
   twitter: {
     card: "summary_large_image",

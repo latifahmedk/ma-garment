@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight, PhoneCall } from "lucide-react";
@@ -23,8 +24,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo / Factory Name */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-lg bg-slate-900 flex items-center justify-center text-white font-bold text-xl tracking-wider shadow-sm group-hover:bg-blue-900 transition-colors">
-              MA
+            <div className="relative w-12 h-12 rounded-xl bg-white border border-slate-200 shadow-2xs overflow-hidden flex items-center justify-center p-1 group-hover:border-blue-500 group-hover:shadow-xs transition-all shrink-0">
+              <Image
+                src="/images/logo.png"
+                alt="MA Garments Logo"
+                width={48}
+                height={48}
+                className="object-contain w-full h-full"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold tracking-tight text-slate-900 leading-tight">
