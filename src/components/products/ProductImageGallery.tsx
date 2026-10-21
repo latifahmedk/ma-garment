@@ -37,20 +37,19 @@ export default function ProductImageGallery({
     setActiveImageIndex(0);
   }
 
-  // Eagerly preload all color images for this product into browser cache
-  useEffect(() => {
-    product.colors.forEach((col) => {
-      Object.values(col.images || {}).forEach((src) => {
-        if (src) {
-          const img = new window.Image();
-          img.src = src;
-        }
-      });
-    });
-  }, [product]);
-
   // Safe color access
   const currentColor = product.colors[selectedColorIndex] || product.colors[0];
+
+  // Preload only the 4 detail images of the selected color to keep mobile snappy
+  useEffect(() => {
+    if (!currentColor?.images) return;
+    Object.values(currentColor.images).forEach((src) => {
+      if (src) {
+        const img = new window.Image();
+        img.src = src;
+      }
+    });
+  }, [currentColor]);
 
   // The 4 images for the selected color
   const colorImagesList = [

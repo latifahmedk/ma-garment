@@ -5,64 +5,36 @@ import { products } from "@/data/products";
 
 /**
  * CatalogueImagePreloader
- * Eagerly preloads all product color images into browser cache upon website visit.
- * Ensures switching colors on any product card or modal is 100% instantaneous.
+ * Intelligently warms cache for primary catalogue cards during idle time.
+ * Prevents mobile network congestion by skipping heavy bulk downloads on small screens.
  */
 export default function CatalogueImagePreloader() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const primaryImages: string[] = [];
-    const detailImages: string[] = [];
-    const seen = new Set<string>();
+    // Skip on mobile screens or if Save-Data mode is active to preserve mobile bandwidth
+    const isMobile = window.innerWidth < 768;
+    const isSaveData = (navigator as unknown as { connection?: { saveData?: boolean } })
+      ?.connection?.saveData;
 
-    const addPrimary = (url?: string) => {
-      if (url && !seen.has(url)) {
-        seen.add(url);
-        primaryImages.push(url);
-      }
-    };
+    if (isMobile || isSaveData) {
+      return;
+    }
 
-    const addDetail = (url?: string) => {
-      if (url && !seen.has(url)) {
-        seen.add(url);
-        detailImages.push(url);
-      }
-    };
-
-    // Collect all image URLs across all products and colors
-    products.forEach((prod) => {
-      addPrimary(prod.image);
-      prod.colors.forEach((col) => {
-        addPrimary(col.images?.full);
-        addDetail(col.images?.waist);
-        addDetail(col.images?.pocket);
-        addDetail(col.images?.["side-pocket"]);
-        addDetail(col.images?.bottom);
+    // On desktop, gently warm only the 5 main product images during idle time
+    const scheduleWarmup = () => {
+      products.forEach((prod) => {
+        if (prod.image) {
+          const img = new window.Image();
+          img.src = prod.image;
+        }
       });
-    });
-
-    const preload = (url: string) => {
-      try {
-        const img = new window.Image();
-        img.src = url;
-      } catch {
-        // Ignore preload errors gracefully
-      }
-    };
-
-    // 1. Preload all primary/full views immediately
-    primaryImages.forEach(preload);
-
-    // 2. Preload remaining detail views in background idle time
-    const scheduleDetails = () => {
-      detailImages.forEach(preload);
     };
 
     if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(scheduleDetails, { timeout: 1500 });
+      window.requestIdleCallback(scheduleWarmup, { timeout: 3000 });
     } else {
-      setTimeout(scheduleDetails, 300);
+      setTimeout(scheduleWarmup, 1500);
     }
   }, []);
 

@@ -42,10 +42,11 @@ export default function FeaturedProducts() {
 
         {/* Product Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredList.map((product) => (
+          {featuredList.map((product, idx) => (
             <ProductCard
               key={product.id}
               product={product}
+              priority={idx < 2}
               onOpenDetails={(prod, color) => {
                 setSelectedProduct(prod);
                 setSelectedColorName(color);

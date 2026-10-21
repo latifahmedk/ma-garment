@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Product } from "@/types";
 import { MessageCircle } from "lucide-react";
@@ -10,9 +10,10 @@ import { getStandardSizes } from "@/utils/productValidation";
 interface ProductCardProps {
   product: Product;
   onOpenDetails?: (product: Product, initialColorName?: string) => void;
+  priority?: boolean;
 }
 
-export default function ProductCard({ product, onOpenDetails }: ProductCardProps) {
+export default function ProductCard({ product, onOpenDetails, priority = false }: ProductCardProps) {
   const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
   const currentColor = product.colors[selectedColorIndex] || product.colors[0];
   const cardImage = currentColor.images?.full || product.image;
@@ -20,16 +21,6 @@ export default function ProductCard({ product, onOpenDetails }: ProductCardProps
   const whatsappInquiryUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(
     `Hello MA Garments! I am interested in wholesale pricing for your "${product.name}" in ${currentColor.name} (${product.fabric}, MOQ: ${product.moq}). Please share catalog & bulk quotation.`
   )}`;
-
-  // Eagerly preload this card's color variants so swatch clicks are instant
-  useEffect(() => {
-    product.colors.forEach((col) => {
-      if (col.images?.full) {
-        const img = new window.Image();
-        img.src = col.images.full;
-      }
-    });
-  }, [product]);
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-2xs hover:shadow-lg hover:border-blue-300 transition-all duration-300 flex flex-col justify-between group">
@@ -43,6 +34,7 @@ export default function ProductCard({ product, onOpenDetails }: ProductCardProps
             src={cardImage}
             alt={`${product.name} - ${currentColor.name} - Wholesale Track Pants Manufacturer Mumbai`}
             fill
+            priority={priority}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
