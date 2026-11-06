@@ -10,31 +10,38 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileMenuIcon = document.getElementById("mobile-menu-icon");
 
   if (mobileMenuBtn && mobileMenu) {
+    function openMobileMenu() {
+      mobileMenu.classList.remove("hidden");
+      mobileMenuBtn.setAttribute("aria-expanded", "true");
+      if (mobileMenuIcon) {
+        // Change to Close (X) icon
+        mobileMenuIcon.innerHTML = `
+          <line x1="18" x2="6" y1="6" y2="18"></line>
+          <line x1="6" x2="18" y1="6" y2="18"></line>
+        `;
+      }
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add("hidden");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+      if (mobileMenuIcon) {
+        // Change back to Hamburger Menu icon
+        mobileMenuIcon.innerHTML = `
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        `;
+      }
+    }
+
     mobileMenuBtn.addEventListener("click", function (e) {
       e.stopPropagation();
       const isHidden = mobileMenu.classList.contains("hidden");
-
       if (isHidden) {
-        mobileMenu.classList.remove("hidden");
-        mobileMenuBtn.setAttribute("aria-expanded", "true");
-        if (mobileMenuIcon) {
-          // Change to Close (X) icon
-          mobileMenuIcon.innerHTML = `
-            <line x1="18" x2="6" y1="6" y2="18"></line>
-            <line x1="6" x2="18" y1="6" y2="18"></line>
-          `;
-        }
+        openMobileMenu();
       } else {
-        mobileMenu.classList.add("hidden");
-        mobileMenuBtn.setAttribute("aria-expanded", "false");
-        if (mobileMenuIcon) {
-          // Change back to Hamburger Menu icon
-          mobileMenuIcon.innerHTML = `
-            <line x1="4" x2="20" y1="12" y2="12"></line>
-            <line x1="4" x2="20" y1="6" y2="6"></line>
-            <line x1="4" x2="20" y1="18" y2="18"></line>
-          `;
-        }
+        closeMobileMenu();
       }
     });
 
@@ -42,16 +49,15 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (e) {
       if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
         if (!mobileMenu.classList.contains("hidden")) {
-          mobileMenu.classList.add("hidden");
-          mobileMenuBtn.setAttribute("aria-expanded", "false");
-          if (mobileMenuIcon) {
-            mobileMenuIcon.innerHTML = `
-              <line x1="4" x2="20" y1="12" y2="12"></line>
-              <line x1="4" x2="20" y1="6" y2="6"></line>
-              <line x1="4" x2="20" y1="18" y2="18"></line>
-            `;
-          }
+          closeMobileMenu();
         }
+      }
+    });
+
+    // Close mobile menu when Escape key is pressed
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+        closeMobileMenu();
       }
     });
 
@@ -59,15 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const mobileLinks = mobileMenu.querySelectorAll("a");
     mobileLinks.forEach((link) => {
       link.addEventListener("click", function () {
-        mobileMenu.classList.add("hidden");
-        mobileMenuBtn.setAttribute("aria-expanded", "false");
-        if (mobileMenuIcon) {
-          mobileMenuIcon.innerHTML = `
-            <line x1="4" x2="20" y1="12" y2="12"></line>
-            <line x1="4" x2="20" y1="6" y2="6"></line>
-            <line x1="4" x2="20" y1="18" y2="18"></line>
-          `;
-        }
+        closeMobileMenu();
       });
     });
   }
