@@ -1,0 +1,583 @@
+/**
+ * MA Garments — Responsive Mobile-First Enhancements
+ * Pure CSS3 — Fully supports 320px to 1440px+
+ * Preserves existing brand identity, colors, typography, and desktop layouts.
+ */
+
+/* ==========================================================================
+   1. GLOBAL RESET & OVERFLOW PREVENTION
+   ========================================================================== */
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Touch target accessibility */
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* Prevent auto-zoom on iOS when tapping form fields */
+input, select, textarea {
+  font-size: 16px !important;
+}
+@media (min-width: 640px) {
+  input, select, textarea {
+    font-size: 0.875rem !important; /* 14px on desktop */
+  }
+}
+
+/* ==========================================================================
+   2. TOP NOTICE BANNER (B2B NOTIFICATION)
+   ========================================================================== */
+
+.top-notice-banner {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 639px) {
+  .top-notice-banner .notice-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+  }
+  
+  .top-notice-banner .notice-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+  }
+}
+
+/* ==========================================================================
+   3. STICKY NAVBAR & MOBILE NAVIGATION DRAWER
+   ========================================================================== */
+
+/* Navbar header container */
+header.sticky {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Desktop navigation rules */
+@media (max-width: 767px) {
+  nav.hidden.md\:flex,
+  .hidden.md\:flex {
+    display: none !important;
+  }
+
+  .hidden.lg\:flex {
+    display: none !important;
+  }
+
+  #mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+    touch-action: manipulation;
+  }
+}
+
+@media (min-width: 768px) {
+  nav.hidden.md\:flex,
+  .hidden.md\:flex {
+    display: flex !important;
+  }
+
+  #mobile-menu-btn,
+  #mobile-menu {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hidden.lg\:flex {
+    display: flex !important;
+  }
+}
+
+/* Mobile Brand Title / Subtitle Alignment */
+@media (max-width: 480px) {
+  .brand-logo-wrap {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .brand-title {
+    font-size: 1.1rem !important;
+    letter-spacing: -0.01em;
+  }
+  .brand-subtitle {
+    font-size: 10px !important;
+    max-width: 190px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Mobile Drawer Animation & Styling */
+#mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100vw;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  z-index: 50;
+}
+
+#mobile-menu.hidden {
+  display: none !important;
+}
+
+#mobile-menu:not(.hidden) {
+  display: block !important;
+}
+
+#mobile-menu a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   4. HERO SECTION RESPONSIVENESS
+   ========================================================================== */
+
+/* Fluid Typography for Hero */
+.hero-title {
+  font-size: clamp(1.75rem, 5vw + 0.5rem, 3rem) !important;
+  line-height: 1.18 !important;
+  word-break: break-word;
+}
+
+.hero-badge {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+/* Hero CTAs on Mobile */
+@media (max-width: 639px) {
+  .hero-cta-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .hero-cta-group > a {
+    width: 100% !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Workshop image on mobile */
+  .hero-workshop-img {
+    height: 260px !important;
+    max-height: 60vh !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    width: 100% !important;
+  }
+
+  /* Workshop overlay badge */
+  .hero-overlay-badge {
+    bottom: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    padding: 10px !important;
+    font-size: 11px !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero-workshop-img {
+    height: 380px !important;
+  }
+}
+
+/* ==========================================================================
+   5. MANUFACTURING CAPACITY & STATISTICS SECTION (2-COL ON MOBILE)
+   ========================================================================== */
+
+@media (max-width: 639px) {
+  /* 2-column grid for statistics cards on mobile screens */
+  .stats-grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .stats-card {
+    padding: 14px 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  .stats-card .stat-number {
+    font-size: 1.45rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .stats-card .stat-unit {
+    font-size: 10px !important;
+  }
+
+  .stats-card .stat-title {
+    font-size: 12px !important;
+    margin-top: 4px !important;
+  }
+
+  .stats-card .stat-desc {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    margin-top: 4px !important;
+  }
+}
+
+/* On very narrow screens (< 330px), single column */
+@media (max-width: 330px) {
+  .stats-grid-container {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   6. FEATURED PRODUCTS & CATALOGUE GRIDS (2-COL ON MOBILE)
+   ========================================================================== */
+
+@media (max-width: 639px) {
+  /* 2 columns on mobile devices */
+  #featured-products-grid,
+  #products-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  /* Compact Product Card on Mobile */
+  .product-card {
+    border-radius: 12px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .product-card .card-content {
+    padding: 10px 8px !important;
+  }
+
+  .product-card .card-title {
+    font-size: 0.8125rem !important; /* 13px */
+    line-height: 1.25 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 2.5em;
+  }
+
+  .product-card .card-fabric {
+    font-size: 10.5px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-card .card-badge-top {
+    top: 6px !important;
+    left: 6px !important;
+    gap: 4px !important;
+  }
+
+  .product-card .card-badge-top span {
+    font-size: 9px !important;
+    padding: 2px 5px !important;
+  }
+
+  .product-card .card-color-badge {
+    bottom: 6px !important;
+    left: 6px !important;
+    font-size: 9px !important;
+    padding: 2px 6px !important;
+  }
+
+  .product-card .color-swatch-btn {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .product-card .card-swatches-wrap {
+    flex-wrap: wrap;
+    gap: 4px !important;
+  }
+
+  .product-card .card-actions-grid {
+    padding: 0 8px 10px 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .product-card .card-actions-grid button,
+  .product-card .card-actions-grid a {
+    min-height: 36px !important;
+    font-size: 11px !important;
+    padding: 6px 8px !important;
+    border-radius: 6px !important;
+  }
+}
+
+/* Single column fallback for extremely small displays (< 330px) */
+@media (max-width: 330px) {
+  #featured-products-grid,
+  #products-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   7. CATEGORY GRID (6 CARDS - 2-COL ON MOBILE)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .category-grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .category-card {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+
+  .category-card .card-title {
+    font-size: 0.875rem !important; /* 14px */
+  }
+
+  .category-card .card-desc {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .category-grid-container {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   8. PRODUCT MODAL & LIGHTBOX RESPONSIVENESS
+   ========================================================================== */
+
+#product-modal {
+  padding: 8px !important;
+}
+
+@media (max-width: 767px) {
+  #product-modal .modal-content-wrap {
+    width: 100% !important;
+    max-height: 92vh !important;
+    border-radius: 16px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  #modal-detail-thumbs {
+    gap: 6px !important;
+  }
+
+  #modal-detail-thumbs button {
+    padding: 2px !important;
+    border-radius: 6px !important;
+  }
+
+  #modal-specs-table td {
+    padding: 6px 8px !important;
+    font-size: 11px !important;
+  }
+
+  .modal-sticky-cta {
+    position: sticky;
+    bottom: 0;
+    background: #ffffff;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-top: 1px solid #e2e8f0;
+  }
+}
+
+/* Lightbox */
+#lightbox-modal {
+  padding: 12px !important;
+}
+
+#lightbox-modal .lightbox-container {
+  max-width: 100vw !important;
+  max-height: 80vh !important;
+}
+
+/* ==========================================================================
+   9. QUICK CONTACTS & FORM (CONTACT PAGE)
+   ========================================================================== */
+
+@media (max-width: 639px) {
+  .contact-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .contact-card {
+    padding: 14px 12px !important;
+  }
+
+  .contact-card h3 {
+    font-size: 13px !important;
+  }
+
+  .contact-form-container {
+    padding: 16px !important;
+    border-radius: 14px !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .contact-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   10. FACTORY / ABOUT PAGE RESPONSIVENESS
+   ========================================================================== */
+
+@media (max-width: 639px) {
+  .about-metrics-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    padding: 16px 12px !important;
+  }
+
+  .about-metrics-grid > div {
+    border-right: none !important;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 10px !important;
+  }
+
+  .workflow-steps-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .workflow-step-card {
+    padding: 14px 10px !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .about-metrics-grid,
+  .workflow-steps-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   11. FLOATING WHATSAPP BUTTON (SAFE AREA & VIEWPORT CONSTRAINTS)
+   ========================================================================== */
+
+#floating-whatsapp,
+.floating-whatsapp-wrap {
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+  right: calc(16px + env(safe-area-inset-right, 0px)) !important;
+  z-index: 40 !important;
+}
+
+@media (max-width: 639px) {
+  #floating-whatsapp a,
+  .floating-whatsapp-wrap a {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  #floating-whatsapp svg,
+  .floating-whatsapp-wrap svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  #wa-tooltip {
+    max-width: calc(100vw - 80px) !important;
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+  }
+}
+
+/* ==========================================================================
+   12. FOOTER RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  footer .footer-badges-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding-bottom: 24px !important;
+  }
+
+  footer .footer-links-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  footer .footer-factory-info {
+    grid-column: span 2 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  footer .footer-links-grid {
+    grid-template-columns: 1fr !important;
+  }
+  footer .footer-factory-info {
+    grid-column: span 1 !important;
+  }
+}
