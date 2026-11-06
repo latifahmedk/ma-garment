@@ -38,7 +38,6 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
 
   <!-- JSON-LD Structured Data Schema -->
   <script type="application/ld+json">
@@ -67,8 +66,8 @@
 <body class="min-h-screen flex flex-col font-sans bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
 
   <!-- Top Wholesale B2B Notice -->
-  <div class="top-notice-banner bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
-    <div class="notice-content max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+  <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
       <div class="flex items-center gap-2 text-center sm:text-left">
         <span class="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-300 font-semibold px-2 py-0.5 rounded text-[11px] border border-amber-500/30">
           <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
@@ -82,7 +81,7 @@
         </span>
       </div>
 
-      <div class="notice-contacts flex items-center gap-4 text-[11px] sm:text-xs">
+      <div class="flex items-center gap-4 text-[11px] sm:text-xs">
         <div class="hidden lg:flex items-center gap-1 text-slate-400">
           <svg class="w-3 h-3 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span>Sion West, Mumbai 400022</span>
@@ -104,17 +103,17 @@
   <!-- Main Sticky Navbar -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 sm:h-20">
+      <div class="flex items-center justify-between h-20">
         <!-- Logo / Factory Name -->
-        <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
-          <div class="brand-logo-wrap relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white border border-slate-200 shadow-2xs overflow-hidden flex items-center justify-center p-1 group-hover:border-blue-500 group-hover:shadow-xs transition-all shrink-0">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="relative w-12 h-12 rounded-xl bg-white border border-slate-200 shadow-2xs overflow-hidden flex items-center justify-center p-1 group-hover:border-blue-500 group-hover:shadow-xs transition-all shrink-0">
             <img src="images/logo.png" alt="MA Garments Logo" width="48" height="48" class="object-contain w-full h-full" />
           </div>
-          <div class="flex flex-col min-w-0">
-            <span class="brand-title text-lg sm:text-xl font-bold tracking-tight text-slate-900 leading-tight">
+          <div class="flex flex-col">
+            <span class="text-xl font-bold tracking-tight text-slate-900 leading-tight">
               MA GARMENTS
             </span>
-            <span class="brand-subtitle text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-slate-500 truncate">
+            <span class="text-[11px] font-medium uppercase tracking-wider text-slate-500">
               Track Pants Manufacturer • Sion, Mumbai
             </span>
           </div>
@@ -278,7 +277,7 @@
       </div>
 
       <!-- Products Grid -->
-      <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Products populated via js/products.js -->
       </div>
 
@@ -478,7 +477,7 @@
   </footer>
 
   <!-- Floating Wholesale WhatsApp Inquiry Button -->
-  <div id="floating-whatsapp" class="floating-whatsapp-wrap fixed bottom-6 right-6 z-40 flex items-center gap-3">
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
     <div id="wa-tooltip" class="hidden sm:flex items-center gap-2 bg-white text-slate-800 text-xs font-medium py-2 px-3 rounded-lg shadow-xl border border-slate-200 animate-fade-in">
       <span>Chat with Factory Manager (Min. 100 Pcs)</span>
       <button id="wa-tooltip-close" type="button" class="text-slate-400 hover:text-slate-600" aria-label="Close tooltip">

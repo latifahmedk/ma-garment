@@ -104,7 +104,7 @@ Please send me wholesale bulk price per piece and sample terms.`;
             />
 
             <!-- Category & GSM Badge -->
-            <div class="card-badge-top absolute top-3 left-3 flex flex-col gap-1.5 items-start pointer-events-none">
+            <div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start pointer-events-none">
               <span class="bg-slate-900/90 backdrop-blur-xs text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wide uppercase shadow-xs">
                 ${product.category}
               </span>
@@ -130,12 +130,12 @@ Please send me wholesale bulk price per piece and sample terms.`;
           </div>
 
           <!-- Content Body -->
-          <div class="card-content p-5 space-y-3">
+          <div class="p-5 space-y-3">
             <div>
-              <h3 class="card-title text-base sm:text-lg font-bold text-slate-900 leading-snug group-hover:text-blue-700 transition-colors cursor-pointer" data-action="open-details">
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 leading-snug group-hover:text-blue-700 transition-colors cursor-pointer" data-action="open-details">
                 ${product.name}
               </h3>
-              <p class="card-fabric text-xs font-medium text-slate-500 mt-1">
+              <p class="text-xs font-medium text-slate-500 mt-1">
                 ${product.fabric}
               </p>
             </div>
@@ -150,7 +150,7 @@ Please send me wholesale bulk price per piece and sample terms.`;
                   ${defaultColor.name}
                 </span>
               </div>
-              <div class="card-swatches-wrap flex items-center gap-1.5">
+              <div class="flex items-center gap-1.5">
                 ${swatchesHTML}
                 <span class="text-[10px] text-slate-400 font-medium ml-1">
                   (4 views each)
@@ -174,14 +174,13 @@ Please send me wholesale bulk price per piece and sample terms.`;
         </div>
 
         <!-- Card Footer Actions -->
-        <div class="card-actions-grid p-5 pt-0 grid grid-cols-2 gap-2">
+        <div class="p-5 pt-0 grid grid-cols-2 gap-2">
           <button
             type="button"
             class="w-full py-2.5 px-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-lg transition-colors text-center"
             data-action="open-details"
           >
-            <span class="hidden sm:inline">View Specs & Gallery</span>
-            <span class="sm:hidden">Specs & Views</span>
+            View Specs & Gallery
           </button>
 
           <a

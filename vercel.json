@@ -1,9 +1,0 @@
-{
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/images/products/dyson/:match*",
-      "destination": "/images/products/Dyson/:match*"
-    }
-  ]
-}
