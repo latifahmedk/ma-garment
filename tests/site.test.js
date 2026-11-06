@@ -143,6 +143,29 @@ describe('2. Product Data & Wholesale Catalogue Tests', () => {
     assert.ok(totalImages >= 100, `Expected over 100 images, checked ${totalImages}`);
   });
 
+  it('Every product image path matches disk filesystem casing exactly (Linux/Vercel case-sensitive check)', () => {
+    function verifyExactCase(filePath) {
+      const parts = filePath.split('/');
+      let current = process.cwd();
+      for (const part of parts) {
+        if (!part) continue;
+        const entries = fs.readdirSync(current);
+        const match = entries.find(e => e === part);
+        assert.ok(match, `Case mismatch in path "${filePath}": segment "${part}" does not match disk entries exactly`);
+        current = path.join(current, match);
+      }
+    }
+
+    for (const prod of products) {
+      if (prod.image) verifyExactCase(prod.image);
+      for (const col of prod.colors) {
+        for (const imgPath of Object.values(col.images || {})) {
+          if (imgPath) verifyExactCase(imgPath);
+        }
+      }
+    }
+  });
+
   it('Product specifications are complete and wholesale-ready', () => {
     for (const prod of products) {
       assert.ok(prod.fabric, `${prod.name} has fabric spec`);

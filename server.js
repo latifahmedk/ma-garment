@@ -41,6 +41,11 @@ const server = http.createServer((req, res) => {
     filePath = filePath + '.html';
   }
 
+  // Handle case variance for dyson / Dyson product images
+  if (urlPath.includes('/images/products/dyson/')) {
+    filePath = path.join(__dirname, urlPath.replace('/images/products/dyson/', '/images/products/Dyson/'));
+  }
+
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
       // 404 handler

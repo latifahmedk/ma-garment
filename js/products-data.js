@@ -231,7 +231,7 @@ window.PRODUCTS_DATA = [
     fabric: "220 GSM Imported Dyson Fine Dotted Lycra",
     gsm: 220,
     fit: "Modern Slim-Tapered Athletic Fit",
-    image: "images/products/dyson/light-grey/dyson-light-grey-full.png",
+    image: "images/products/Dyson/light-grey/dyson-light-grey-full.png",
     featured: true,
     colors: [
       {
@@ -239,10 +239,10 @@ window.PRODUCTS_DATA = [
         hex: "#98999D",
         inStock: true,
         images: {
-          full: "images/products/dyson/light-grey/dyson-light-grey-full.png",
-          waist: "images/products/dyson/light-grey/dyson-light-grey-waist.png",
-          pocket: "images/products/dyson/light-grey/dyson-light-grey-pocket.png",
-          bottom: "images/products/dyson/light-grey/dyson-light-grey-bottom.png",
+          full: "images/products/Dyson/light-grey/dyson-light-grey-full.png",
+          waist: "images/products/Dyson/light-grey/dyson-light-grey-waist.png",
+          pocket: "images/products/Dyson/light-grey/dyson-light-grey-pocket.png",
+          bottom: "images/products/Dyson/light-grey/dyson-light-grey-bottom.png",
         },
       },
       {
@@ -250,10 +250,10 @@ window.PRODUCTS_DATA = [
         hex: "#334269",
         inStock: true,
         images: {
-          full: "images/products/dyson/royal-blue/dyson-royal-blue-full.png",
-          waist: "images/products/dyson/royal-blue/dyson-royal-blue-waist.png",
-          pocket: "images/products/dyson/royal-blue/dyson-royal-blue-pocket.png",
-          bottom: "images/products/dyson/royal-blue/dyson-royal-blue-bottom.png",
+          full: "images/products/Dyson/royal-blue/dyson-royal-blue-full.png",
+          waist: "images/products/Dyson/royal-blue/dyson-royal-blue-waist.png",
+          pocket: "images/products/Dyson/royal-blue/dyson-royal-blue-pocket.png",
+          bottom: "images/products/Dyson/royal-blue/dyson-royal-blue-bottom.png",
         },
       },
       {
@@ -261,10 +261,10 @@ window.PRODUCTS_DATA = [
         hex: "#333933",
         inStock: true,
         images: {
-          full: "images/products/dyson/olive-green/dyson-olive-green-full.png",
-          waist: "images/products/dyson/olive-green/dyson-olive-green-waist.png",
-          pocket: "images/products/dyson/olive-green/dyson-olive-green-pocket.png",
-          bottom: "images/products/dyson/olive-green/dyson-olive-green-bottom.png",
+          full: "images/products/Dyson/olive-green/dyson-olive-green-full.png",
+          waist: "images/products/Dyson/olive-green/dyson-olive-green-waist.png",
+          pocket: "images/products/Dyson/olive-green/dyson-olive-green-pocket.png",
+          bottom: "images/products/Dyson/olive-green/dyson-olive-green-bottom.png",
         },
       },
       {
@@ -272,10 +272,10 @@ window.PRODUCTS_DATA = [
         hex: "#5B636A",
         inStock: true,
         images: {
-          full: "images/products/dyson/charcoal-grey/dyson-charcoal-grey-full.png",
-          waist: "images/products/dyson/charcoal-grey/dyson-charcoal-grey-waist.png",
-          pocket: "images/products/dyson/charcoal-grey/dyson-charcoal-grey-pocket.png",
-          bottom: "images/products/dyson/charcoal-grey/dyson-charcoal-grey-bottom.png",
+          full: "images/products/Dyson/charcoal-grey/dyson-charcoal-grey-full.png",
+          waist: "images/products/Dyson/charcoal-grey/dyson-charcoal-grey-waist.png",
+          pocket: "images/products/Dyson/charcoal-grey/dyson-charcoal-grey-pocket.png",
+          bottom: "images/products/Dyson/charcoal-grey/dyson-charcoal-grey-bottom.png",
         },
       },
       {
@@ -283,10 +283,10 @@ window.PRODUCTS_DATA = [
         hex: "#566A74",
         inStock: true,
         images: {
-          full: "images/products/dyson/teal-blue/dyson-teal-blue-full.png",
-          waist: "images/products/dyson/teal-blue/dyson-teal-blue-waist.png",
-          pocket: "images/products/dyson/teal-blue/dyson-teal-blue-pocket.png",
-          bottom: "images/products/dyson/teal-blue/dyson-teal-blue-bottom.png",
+          full: "images/products/Dyson/teal-blue/dyson-teal-blue-full.png",
+          waist: "images/products/Dyson/teal-blue/dyson-teal-blue-waist.png",
+          pocket: "images/products/Dyson/teal-blue/dyson-teal-blue-pocket.png",
+          bottom: "images/products/Dyson/teal-blue/dyson-teal-blue-bottom.png",
         },
       },
       {
@@ -294,10 +294,10 @@ window.PRODUCTS_DATA = [
         hex: "#26364E",
         inStock: true,
         images: {
-          full: "images/products/dyson/navy-blue/dyson-navy-blue-full.png",
-          waist: "images/products/dyson/navy-blue/dyson-navy-blue-waist.png",
-          pocket: "images/products/dyson/navy-blue/dyson-navy-blue-pocket.png",
-          bottom: "images/products/dyson/navy-blue/dyson-navy-blue-bottom.png",
+          full: "images/products/Dyson/navy-blue/dyson-navy-blue-full.png",
+          waist: "images/products/Dyson/navy-blue/dyson-navy-blue-waist.png",
+          pocket: "images/products/Dyson/navy-blue/dyson-navy-blue-pocket.png",
+          bottom: "images/products/Dyson/navy-blue/dyson-navy-blue-bottom.png",
         },
       },
     ],
