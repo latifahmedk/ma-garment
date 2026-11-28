@@ -515,7 +515,7 @@ Please send me wholesale bulk price per piece and sample terms.`;
 
     const bulkEnquiryBtn = document.getElementById("modal-bulk-enquiry-btn");
     if (bulkEnquiryBtn) {
-      bulkEnquiryBtn.href = `contact.html?product=${encodeURIComponent(currentModalProduct.name)}`;
+      bulkEnquiryBtn.href = `/contact?product=${encodeURIComponent(currentModalProduct.name)}`;
     }
 
     // If lightbox is also open, keep it synced
